@@ -40,7 +40,7 @@ Gradle是什么　Gradle是继Maven之后">
 <meta property="og:site_name" content="Gradle 中文用户组">
 <meta property="og:description" content="Gradle是新一代构建工具，从0.x版本一路走来虽然国内可寻的资料多了一些，但都是比较碎片化的知识。官方的Userguide虽然是业内良心之作，但无奈太长，且版本变化较快，又鉴于很多同学一看到英文内心便已认定无法读懂，遂打算利用业余时间攒此本《跟我学gradle》，希望通过此书可以降低学习曲线能让希望使用Gradle的同学更轻易地入门。   
 Gradle是什么　Gradle是继Maven之后">
-<meta property="og:updated_time" content="2016-08-27T02:44:07.058Z">
+<meta property="og:updated_time" content="2016-08-27T06:19:23.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle介绍">
 <meta name="twitter:description" content="Gradle是新一代构建工具，从0.x版本一路走来虽然国内可寻的资料多了一些，但都是比较碎片化的知识。官方的Userguide虽然是业内良心之作，但无奈太长，且版本变化较快，又鉴于很多同学一看到英文内心便已认定无法读懂，遂打算利用业余时间攒此本《跟我学gradle》，希望通过此书可以降低学习曲线能让希望使用Gradle的同学更轻易地入门。   
@@ -70,7 +70,7 @@ Gradle是什么　Gradle是继Maven之后">
     
     <nav id="main-nav">
       <a href="#" class="main-nav-link" alt="(建设中)">用户手册</a>
-      <a href="/zh-cn/training/" class="main-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/About/" class="main-nav-link" target="_self">关于</a>
+      <a href="/zh-cn/training/" class="main-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/about/" class="main-nav-link" target="_self">关于</a>
       <a href="https://github.com/gradle/gradle" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
       <div id="search-input-wrap">
         <div id="search-input-icon">
@@ -111,8 +111,7 @@ Gradle是什么　Gradle是继Maven之后">
               <div class="article-content" itemprop="articleBody">
                 <p> Gradle是新一代构建工具，从0.x版本一路走来虽然国内可寻的资料多了一些，但都是比较碎片化的知识。官方的Userguide虽然是业内良心之作，但无奈太长，且版本变化较快，又鉴于很多同学一看到英文内心便已认定无法读懂，遂打算利用业余时间攒此本《跟我学gradle》，希望通过此书可以降低学习曲线能让希望使用Gradle的同学更轻易地入门。   </p>
 <h3 id="Gradle是什么" class="article-heading"><a href="#Gradle是什么" class="headerlink" title="Gradle是什么"></a>Gradle是什么<a class="article-anchor" href="#Gradle是什么" aria-hidden="true"></a></h3><p>　Gradle是继Maven之后的新一代构建工具，它采用基于groovy的DSL语言作为脚本，相比传统构建工具通过XML来配置而言，最直观上的感受就是脚本更加的简洁、优雅。如果你之前对Maven有所了解，那么可以很轻易的转换到Gradle，它采用了同Maven一致的目录结构，可以与Maven一样使用Maven中央仓库以及各类仓库的资源，并且Gradle默认也内置了脚本转换命令可以方便的将POM转换为gradle.build。</p>
-<p>###Gradle的优势</p>
-<ul>
+<h3 id="Gradle的优势" class="article-heading"><a href="#Gradle的优势" class="headerlink" title="Gradle的优势"></a>Gradle的优势<a class="article-anchor" href="#Gradle的优势" aria-hidden="true"></a></h3><ul>
 <li>依赖管理:即将你项目中的jar包管理起来，你可以使用Maven或者Ivy的远程仓库、或者本地文件系统等</li>
 <li>编译打包:可以通过脚本实现花样打包，包括修改文件、添加抑或排除某些类或资源、采用指定JDK版本构建、打包后自动上传等等等等</li>
 <li>多项目支持: Gradle对多项目有着良好的支持，比如一个很具有代表性的实践就是spring framework</li>
@@ -120,11 +119,11 @@ Gradle是什么　Gradle是继Maven之后">
 <li>跨平台支持：gradle是基于jvm的，只要有jvm你就可以让gradle运行</li>
 <li>灵活的的脚本：你可以使用groovy灵活的编写任务完成你想要做的任何事情</li>
 </ul>
-<p>###约定优于配置(COC)<br>　约定优于配置(convention over configuration),简单而言就是遵循一定的固定规则从而可以避免额外的配置。虽然这一定程度上降低了灵活性，但却能减少重复的额外配置，同时也可以帮助开发人员遵守一定的规则。当然，约定并不是强制性约束，Gradle提供了各种灵活的途径可以让你更改默认的配置。</p>
+<h3 id="约定优于配置-COC" class="article-heading"><a href="#约定优于配置-COC" class="headerlink" title="约定优于配置(COC)"></a>约定优于配置(COC)<a class="article-anchor" href="#约定优于配置-COC" aria-hidden="true"></a></h3><p>　约定优于配置(convention over configuration),简单而言就是遵循一定的固定规则从而可以避免额外的配置。虽然这一定程度上降低了灵活性，但却能减少重复的额外配置，同时也可以帮助开发人员遵守一定的规则。当然，约定并不是强制性约束，Gradle提供了各种灵活的途径可以让你更改默认的配置。</p>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2016-08-27T02:44:07.058Z" itemprop="dateModified">上次更新：2016-08-27</time>
+                <time class="article-footer-updated" datetime="2016-08-27T06:19:23.383Z" itemprop="dateModified">上次更新：2016-08-27</time>
                 <a href="/training/ch1/intro.html" class="article-footer-next" title="Gradle介绍"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
@@ -150,7 +149,7 @@ Gradle是什么　Gradle是继Maven之后">
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle是什么"><span class="toc-text">Gradle是什么</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle是什么"><span class="toc-text">Gradle是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle的优势"><span class="toc-text">Gradle的优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#约定优于配置-COC"><span class="toc-text">约定优于配置(COC)</span></a></li></ol>
               <a href="#" id="article-toc-top">回到顶部</a>
             </div>
           </aside>
@@ -181,7 +180,7 @@ Gradle是什么　Gradle是继Maven之后">
   <nav id="mobile-nav">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
-      <a href="/zh-cn/training/" class="mobile-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="mobile-nav-link" target="_blank">示例</a><a href="/news/" class="mobile-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="mobile-nav-link" target="_blank">博客</a><a href="/About/" class="mobile-nav-link" target="_self">关于</a>
+      <a href="/zh-cn/training/" class="mobile-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="mobile-nav-link" target="_blank">示例</a><a href="/news/" class="mobile-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="mobile-nav-link" target="_blank">博客</a><a href="/about/" class="mobile-nav-link" target="_self">关于</a>
       <li class="mobile-nav-item">
         <a href="https://github.com/gradle/gradle" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
       </li>
