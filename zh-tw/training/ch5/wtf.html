@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>什么是依赖管理 | Gradle 中文用户组</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://gradlecn.org/zh-tw/training/ch5/wtf.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-tw" href="https://gradlecn.org/zh-tw/training/ch5/wtf.html">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://gradlecn.org/zh-cn/training/ch5/wtf.html">
+    
+  
+  <!-- Icon -->
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link href="/vendors/semantic.min.css" rel="stylesheet" type="text/css">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+	<link href="/vendors/jquery.terminal-0.9.3.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Gradle 中文用户组">
+  <!-- Open Graph -->
+  <meta name="description" content="什么是依赖管理　　通常而言，依赖管理包括两部分，对依赖的管理以及发布物的管理；依赖是指构建项目所需的构件(jar包等)。例如，对于一个应用了spring普通的java web项目而言，spring相关jar包即项目所需的依赖。发布物，则是指项目产出的需要上传的项目产物。
+传统依赖管理的痛点　　　　毋庸置疑，几乎绝大多数项目都会或多或少的依赖于第三方库，尤其像log4j、dom4j、common-l">
+<meta property="og:type" content="website">
+<meta property="og:title" content="什么是依赖管理">
+<meta property="og:url" content="https://gradlecn.org/zh-tw/training/ch5/wtf.html">
+<meta property="og:site_name" content="Gradle 中文用户组">
+<meta property="og:description" content="什么是依赖管理　　通常而言，依赖管理包括两部分，对依赖的管理以及发布物的管理；依赖是指构建项目所需的构件(jar包等)。例如，对于一个应用了spring普通的java web项目而言，spring相关jar包即项目所需的依赖。发布物，则是指项目产出的需要上传的项目产物。
+传统依赖管理的痛点　　　　毋庸置疑，几乎绝大多数项目都会或多或少的依赖于第三方库，尤其像log4j、dom4j、common-l">
+<meta property="og:updated_time" content="2016-08-27T02:49:07.240Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="什么是依赖管理">
+<meta name="twitter:description" content="什么是依赖管理　　通常而言，依赖管理包括两部分，对依赖的管理以及发布物的管理；依赖是指构建项目所需的构件(jar包等)。例如，对于一个应用了spring普通的java web项目而言，spring相关jar包即项目所需的依赖。发布物，则是指项目产出的需要上传的项目产物。
+传统依赖管理的痛点　　　　毋庸置疑，几乎绝大多数项目都会或多或少的依赖于第三方库，尤其像log4j、dom4j、common-l">
+<meta name="twitter:site" content="gradlecn">
+<meta property="fb:admins" content="100000247608790">
+  <!-- Google Analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4910098-10', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+  
+    <a href="/zh-tw/" id="logo"></a>
+    
+    <nav id="main-nav">
+      <a href="#" class="main-nav-link" alt="(建设中)">用户手册</a>
+      <a href="/zh-tw/training/" class="main-nav-link" target="_self">入門教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新聞</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/about/" class="main-nav-link" target="_self">关于</a>
+      <a href="https://github.com/gradle/gradle" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <div id="lang-select-wrap">
+      <label id="lang-select-label"><i class="fa fa-globe"></i><span>正體中文</span></label>
+      <select id="lang-select" data-canonical="training/ch5/wtf.html">
+        
+          <option value="zh-tw" selected>正體中文</option>
+        
+          <option value="zh-cn">简体中文</option>
+        
+      </select>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">什么是依赖管理</h1>
+                <a href="https://github.com/hexojs/site/edit/master/source/zh-tw/training/ch5/wtf.md" class="article-edit-link" title="改進本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h4 id="什么是依赖管理" class="article-heading"><a href="#什么是依赖管理" class="headerlink" title="什么是依赖管理"></a>什么是依赖管理<a class="article-anchor" href="#什么是依赖管理" aria-hidden="true"></a></h4><p>　　通常而言，依赖管理包括两部分，对依赖的管理以及发布物的管理；依赖是指构建项目所需的构件(jar包等)。例如，对于一个应用了spring普通的java web项目而言，spring相关jar包即项目所需的依赖。发布物，则是指项目产出的需要上传的项目产物。</p>
+<h4 id="传统依赖管理的痛点" class="article-heading"><a href="#传统依赖管理的痛点" class="headerlink" title="传统依赖管理的痛点　　"></a>传统依赖管理的痛点　　<a class="article-anchor" href="#传统依赖管理的痛点" aria-hidden="true"></a></h4><p>　　毋庸置疑，几乎绝大多数项目都会或多或少的依赖于第三方库，尤其像log4j、dom4j、common-long、guava这类的三方库。传统情况下我们通常会去网络上自己搜寻这些依赖并把他们下载到WEB-INF/lib下来维护和管理这些三方类库。然而随着项目的推进和时间的推移以及人员的更迭，维护和管理这些依赖就会逐渐变成一件令人头疼的事情。</p>
+<ul>
+<li>想要知道每个jar文件的作用，以及每个jar文件依赖的其它类库，或者升级更新某个jar文件的版本。</li>
+<li>jar文件会随着项目源代码一起提交到版本控制系统，如果n个项目同时用了log4j那么自己的磁盘以及版本控制系统即存在n份相同的文件，额外占据了大量存储空间。</li>
+</ul>
+<h4 id="自动化依赖管理" class="article-heading"><a href="#自动化依赖管理" class="headerlink" title="自动化依赖管理"></a>自动化依赖管理<a class="article-anchor" href="#自动化依赖管理" aria-hidden="true"></a></h4><p>　　不得不说maven的出现使得开发人员从头疼的依赖管理工作中解放了出来，它通过XML的形式来声明项目所需的依赖以及依赖生效的范围，只需一个简单的命令便会自动去帮你寻找和下载所需的依赖以及依赖所需的依赖（即传递性依赖），然而如果一个项目依赖众多并且需要一些额外的处理工作，那么一份冗长的XML配置文件仍然会让你觉得头疼不已。<br>　　Gradle可以说很大程度上完成了maven可以做的所有工作，并且通过灵活的DSL配置还可以完成更多。当然不同于XML的繁琐，Gradle采用更简洁的方式来配置所需的依赖，如以下列举的maven与gradle声明依赖的代码即可看出Gradle是有多么的优雅和简洁。<br><strong>采用maven配置所需依赖</strong><br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>采用gradle配置所需依赖</strong><br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">compile <span class="string">'org.springframework:spring-core:4.3.0.RELEASE'</span></div></pre></td></tr></table></figure></p>
+<p>　　是的，你只需要一行代码即可完成maven用3行代码完成的事情（当然如果你要说去掉换行也可以达到一行效果的话，那我就无言以对了）</p>
+<h4 id="自动化依赖管理带来的优势" class="article-heading"><a href="#自动化依赖管理带来的优势" class="headerlink" title="自动化依赖管理带来的优势"></a>自动化依赖管理带来的优势<a class="article-anchor" href="#自动化依赖管理带来的优势" aria-hidden="true"></a></h4><p>　　可以看到，采用自动化依赖管理后，我们只需要在脚本文件里按照相应的规范书写依赖标识即可轻松完成依赖的管理。</p>
+<ul>
+<li>构建工具会依据你所配置的仓库去搜寻所需依赖，并将这些依赖缓存到本地便于其它项目使用，对，便于其它项目使用，也就是说完全相同的依赖你的磁盘只需要存在一份就可以了。</li>
+<li>采用自动化依赖管理带来的好处就是，无需关心依赖所需的其它依赖（即传递性依赖），比如hibernate-core又依赖了dom4j，那么无需配置dom4j，构建工具会自动发现传递性依赖并将这些传递性依赖一并下载到本地磁盘。</li>
+<li>采用自动化依赖管理，可以方便的对依赖版本进行管理，需要升级的时候只需要改一下脚本中的版本号即可，也可以通过定义版本号变量的形式，使多个依赖引用这一变量，做到版本号的统一控制。</li>
+</ul>
+<p><strong>采用变量统一控制版本号</strong><br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">	<span class="keyword">def</span> bootVersion = <span class="string">"1.3.5.RELEASE"</span></div><div class="line">    compile     <span class="string">"org.springframework.boot:spring-boot-starter-web:$&#123;bootVersion&#125;"</span>,  </div><div class="line">                <span class="string">"org.springframework.boot:spring-boot-starter-data-jpa:$&#123;bootVersion&#125;"</span>,</div><div class="line">                <span class="string">"org.springframework.boot:spring-boot-starter-tomcat:$&#123;bootVersion&#125;"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2016-08-27T02:49:07.240Z" itemprop="dateModified">上次更新：2016-08-27</time>
+                <a href="/training/ch1/intro.html" class="article-footer-next" title="Gradle介绍"><span>下一頁</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gradlecn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目錄</strong>
+              <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是依赖管理"><span class="toc-text">什么是依赖管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#传统依赖管理的痛点"><span class="toc-text">传统依赖管理的痛点　　</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自动化依赖管理"><span class="toc-text">自动化依赖管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自动化依赖管理带来的优势"><span class="toc-text">自动化依赖管理带来的优势</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到頂部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner"><strong class="sidebar-title">基础</strong><a href="/training/ch1/intro.html" class="sidebar-link">Gradle介绍</a><a href="/training/ch2/install.html" class="sidebar-link">下载和安装</a><strong class="sidebar-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="sidebar-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="sidebar-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="sidebar-link">第一个脚本</a><a href="/training/ch3/run.html" class="sidebar-link">打包和运行</a><strong class="sidebar-title">仓库</strong><a href="/training/ch4/wtf.html" class="sidebar-link">什么是仓库</a><a href="/training/ch4/type.html" class="sidebar-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="sidebar-link">搭建私有仓库(nexus)</a><strong class="sidebar-title">依赖</strong><a href="/training/ch5/wtf.html" class="sidebar-link">何为依赖</a><a href="/training/ch5/gav.html" class="sidebar-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="sidebar-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="sidebar-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="sidebar-link">依赖的上传与发布</a><strong class="sidebar-title">IDE集成</strong><a href="/training/ch14/idea.html" class="sidebar-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="sidebar-link">与eclipse集成</a><strong class="sidebar-title">附录</strong><a href="/training/appendix/command.html" class="sidebar-link">附录 A-Gradle命令详解</a><strong class="sidebar-title">其它</strong><a href="/training/tag.html" class="sidebar-link">其他</a><a href="/training/troubleshooting.html" class="sidebar-link">寻求帮助</a><a href="/training/contributing.html" class="sidebar-link">贡献</a></div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2016 <a href="https://zespia.tw/" target="_blank">PKAQ</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://twitter.com/gradlecn" class="footer-link" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://github.com/gradle/gradle" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/zh-tw/training/" class="mobile-nav-link" target="_self">入門教程</a><a href="https://github.com/pkaq/gradleside" class="mobile-nav-link" target="_blank">示例</a><a href="/news/" class="mobile-nav-link" target="_self">新聞</a><a href="http://pkaq.org" class="mobile-nav-link" target="_blank">博客</a><a href="/about/" class="mobile-nav-link" target="_self">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/gradle/gradle" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">基础</strong><a href="/training/ch1/intro.html" class="mobile-nav-link">Gradle介绍</a><a href="/training/ch2/install.html" class="mobile-nav-link">下载和安装</a><strong class="mobile-nav-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="mobile-nav-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="mobile-nav-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="mobile-nav-link">第一个脚本</a><a href="/training/ch3/run.html" class="mobile-nav-link">打包和运行</a><strong class="mobile-nav-title">仓库</strong><a href="/training/ch4/wtf.html" class="mobile-nav-link">什么是仓库</a><a href="/training/ch4/type.html" class="mobile-nav-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="mobile-nav-link">搭建私有仓库(nexus)</a><strong class="mobile-nav-title">依赖</strong><a href="/training/ch5/wtf.html" class="mobile-nav-link">何为依赖</a><a href="/training/ch5/gav.html" class="mobile-nav-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="mobile-nav-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="mobile-nav-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="mobile-nav-link">依赖的上传与发布</a><strong class="mobile-nav-title">IDE集成</strong><a href="/training/ch14/idea.html" class="mobile-nav-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="mobile-nav-link">与eclipse集成</a><strong class="mobile-nav-title">附录</strong><a href="/training/appendix/command.html" class="mobile-nav-link">附录 A-Gradle命令详解</a><strong class="mobile-nav-title">其它</strong><a href="/training/tag.html" class="mobile-nav-link">其他</a><a href="/training/troubleshooting.html" class="mobile-nav-link">寻求帮助</a><a href="/training/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>正體中文</span></span>
+    <select id="mobile-lang-select" data-canonical="training/ch5/wtf.html">
+      
+        <option value="zh-tw" selected>正體中文</option>
+      
+        <option value="zh-cn">简体中文</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/lang_select.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<!-- endbuild -->
+<script src="https://cdn.jsdelivr.net/retinajs/1.3.0/retina.min.js" async></script>
+
+<!-- Algolia -->
+
+
+</body>
+</html>

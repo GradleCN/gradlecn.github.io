@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>跟我学Gradle | Gradle 中文用户组</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://gradlecn.org/zh-tw/training/index.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-tw" href="https://gradlecn.org/zh-tw/training/index.html">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://gradlecn.org/zh-cn/training/index.html">
+    
+  
+  <!-- Icon -->
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link href="/vendors/semantic.min.css" rel="stylesheet" type="text/css">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+	<link href="/vendors/jquery.terminal-0.9.3.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Gradle 中文用户组">
+  <!-- Open Graph -->
+  <meta name="description" content="本教程适合所有程序猿阅读.
+关于教程　　Gradle是新一代构建工具，从0.x版本一路走来虽然国内可寻的资料多了一些，但都是比较碎片化的知识。官方的Userguide虽然是业内良心之作，但无奈太长，且版本变化较快，又鉴于很多同学一看到英文内心便已认定无法读懂，遂打算利用业余时间攒此本《跟我学gradle》，希望通过此书可以降低学习曲线能让希望使用Gradle的同学更轻易地入门。   
+　　p.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="跟我学Gradle">
+<meta property="og:url" content="https://gradlecn.org/zh-tw/training/index.html">
+<meta property="og:site_name" content="Gradle 中文用户组">
+<meta property="og:description" content="本教程适合所有程序猿阅读.
+关于教程　　Gradle是新一代构建工具，从0.x版本一路走来虽然国内可寻的资料多了一些，但都是比较碎片化的知识。官方的Userguide虽然是业内良心之作，但无奈太长，且版本变化较快，又鉴于很多同学一看到英文内心便已认定无法读懂，遂打算利用业余时间攒此本《跟我学gradle》，希望通过此书可以降低学习曲线能让希望使用Gradle的同学更轻易地入门。   
+　　p.">
+<meta property="og:image" content="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png">
+<meta property="og:updated_time" content="2016-08-27T02:43:04.017Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跟我学Gradle">
+<meta name="twitter:description" content="本教程适合所有程序猿阅读.
+关于教程　　Gradle是新一代构建工具，从0.x版本一路走来虽然国内可寻的资料多了一些，但都是比较碎片化的知识。官方的Userguide虽然是业内良心之作，但无奈太长，且版本变化较快，又鉴于很多同学一看到英文内心便已认定无法读懂，遂打算利用业余时间攒此本《跟我学gradle》，希望通过此书可以降低学习曲线能让希望使用Gradle的同学更轻易地入门。   
+　　p.">
+<meta name="twitter:image" content="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png">
+<meta name="twitter:site" content="gradlecn">
+<meta property="fb:admins" content="100000247608790">
+  <!-- Google Analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4910098-10', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+  
+    <a href="/zh-tw/" id="logo"></a>
+    
+    <nav id="main-nav">
+      <a href="#" class="main-nav-link" alt="(建设中)">用户手册</a>
+      <a href="/zh-tw/training/" class="main-nav-link" target="_self">入門教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新聞</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/about/" class="main-nav-link" target="_self">关于</a>
+      <a href="https://github.com/gradle/gradle" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <div id="lang-select-wrap">
+      <label id="lang-select-label"><i class="fa fa-globe"></i><span>正體中文</span></label>
+      <select id="lang-select" data-canonical="training/index.html">
+        
+          <option value="zh-tw" selected>正體中文</option>
+        
+          <option value="zh-cn">简体中文</option>
+        
+      </select>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">跟我学Gradle</h1>
+                <a href="https://github.com/hexojs/site/edit/master/source/zh-tw/training/index.md" class="article-edit-link" title="改進本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>  本教程适合所有程序猿阅读.</p>
+<h3 id="关于教程" class="article-heading"><a href="#关于教程" class="headerlink" title="关于教程"></a>关于教程<a class="article-anchor" href="#关于教程" aria-hidden="true"></a></h3><p>　　Gradle是新一代构建工具，从0.x版本一路走来虽然国内可寻的资料多了一些，但都是比较碎片化的知识。官方的Userguide虽然是业内良心之作，但无奈太长，且版本变化较快，又鉴于很多同学一看到英文内心便已认定无法读懂，遂打算利用业余时间攒此本《跟我学gradle》，希望通过此书可以降低学习曲线能让希望使用Gradle的同学更轻易地入门。   </p>
+<p>　　p.s：之前也有打算翻译过userguide，鉴于如下几个原因现在几乎已经处于停滞状态。</p>
+<ul>
+<li>gradle版本更新较快且多变化</li>
+<li>参与人手不足</li>
+<li>业余时间占用（主要是楼主工作上项目时间的占用）</li>
+<li>…</li>
+</ul>
+<h3 id="书籍目录" class="article-heading"><a href="#书籍目录" class="headerlink" title="书籍目录"></a>书籍目录<a class="article-anchor" href="#书籍目录" aria-hidden="true"></a></h3><p>   你可以点击  &gt;&gt; [这里] &lt;&lt; 了解本书内容</p>
+<h3 id="如何参与" class="article-heading"><a href="#如何参与" class="headerlink" title="如何参与"></a>如何参与<a class="article-anchor" href="#如何参与" aria-hidden="true"></a></h3><p>　　star/fork本项目，加入Gradle中文用户组109752483</p>
+<h3 id="授权许可" class="article-heading"><a href="#授权许可" class="headerlink" title="授权许可"></a>授权许可<a class="article-anchor" href="#授权许可" aria-hidden="true"></a></h3><p><a rel="external" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a><br><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">跟我学Gradle</span> 由 <a xmlns:cc="http://creativecommons.org/ns#" href="gradlecn.org" property="cc:attributionName" rel="cc:attributionURL">Shawn·PKAQ</a> 创作，采用 <a rel="external" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">知识共享 署名-非商业性使用-禁止演绎 4.0 国际 许可协议</a>进行许可。</p>
+<h3 id="贡献人员" class="article-heading"><a href="#贡献人员" class="headerlink" title="贡献人员"></a>贡献人员<a class="article-anchor" href="#贡献人员" aria-hidden="true"></a></h3><h3 id="书籍校对" class="article-heading"><a href="#书籍校对" class="headerlink" title="书籍校对"></a>书籍校对<a class="article-anchor" href="#书籍校对" aria-hidden="true"></a></h3><h3 id="关于我们" class="article-heading"><a href="#关于我们" class="headerlink" title="关于我们"></a>关于我们<a class="article-anchor" href="#关于我们" aria-hidden="true"></a></h3><p>　　欢迎你加入Gradle中文用户组109752483或者给我发送邮件 PKAQ#MSN.COM</p>
+<h3 id="捐助我们" class="article-heading"><a href="#捐助我们" class="headerlink" title="捐助我们"></a>捐助我们<a class="article-anchor" href="#捐助我们" aria-hidden="true"></a></h3><p>　　很高兴我们能帮到您。无论金额多少，都足夠表达您这份心意。謝謝！</p>
+<h3 id="捐赠方式" class="article-heading"><a href="#捐赠方式" class="headerlink" title="捐赠方式"></a>捐赠方式<a class="article-anchor" href="#捐赠方式" aria-hidden="true"></a></h3><p>　　捐款到支付宝账号 `PKAQ@MSN.COM   </p>
+<h3 id="捐赠记录" class="article-heading"><a href="#捐赠记录" class="headerlink" title="捐赠记录"></a>捐赠记录<a class="article-anchor" href="#捐赠记录" aria-hidden="true"></a></h3>
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2016-08-27T02:43:04.017Z" itemprop="dateModified">上次更新：2016-08-27</time>
+                <a href="/training/ch1/intro.html" class="article-footer-next" title="Gradle介绍"><span>下一頁</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gradlecn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目錄</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于教程"><span class="toc-text">关于教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#书籍目录"><span class="toc-text">书籍目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何参与"><span class="toc-text">如何参与</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#授权许可"><span class="toc-text">授权许可</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贡献人员"><span class="toc-text">贡献人员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#书籍校对"><span class="toc-text">书籍校对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于我们"><span class="toc-text">关于我们</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#捐助我们"><span class="toc-text">捐助我们</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#捐赠方式"><span class="toc-text">捐赠方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#捐赠记录"><span class="toc-text">捐赠记录</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到頂部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner"><strong class="sidebar-title">基础</strong><a href="/training/ch1/intro.html" class="sidebar-link">Gradle介绍</a><a href="/training/ch2/install.html" class="sidebar-link">下载和安装</a><strong class="sidebar-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="sidebar-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="sidebar-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="sidebar-link">第一个脚本</a><a href="/training/ch3/run.html" class="sidebar-link">打包和运行</a><strong class="sidebar-title">仓库</strong><a href="/training/ch4/wtf.html" class="sidebar-link">什么是仓库</a><a href="/training/ch4/type.html" class="sidebar-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="sidebar-link">搭建私有仓库(nexus)</a><strong class="sidebar-title">依赖</strong><a href="/training/ch5/wtf.html" class="sidebar-link">何为依赖</a><a href="/training/ch5/gav.html" class="sidebar-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="sidebar-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="sidebar-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="sidebar-link">依赖的上传与发布</a><strong class="sidebar-title">IDE集成</strong><a href="/training/ch14/idea.html" class="sidebar-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="sidebar-link">与eclipse集成</a><strong class="sidebar-title">附录</strong><a href="/training/appendix/command.html" class="sidebar-link">附录 A-Gradle命令详解</a><strong class="sidebar-title">其它</strong><a href="/training/tag.html" class="sidebar-link">其他</a><a href="/training/troubleshooting.html" class="sidebar-link">寻求帮助</a><a href="/training/contributing.html" class="sidebar-link">贡献</a></div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2016 <a href="https://zespia.tw/" target="_blank">PKAQ</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://twitter.com/gradlecn" class="footer-link" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://github.com/gradle/gradle" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/zh-tw/training/" class="mobile-nav-link" target="_self">入門教程</a><a href="https://github.com/pkaq/gradleside" class="mobile-nav-link" target="_blank">示例</a><a href="/news/" class="mobile-nav-link" target="_self">新聞</a><a href="http://pkaq.org" class="mobile-nav-link" target="_blank">博客</a><a href="/about/" class="mobile-nav-link" target="_self">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/gradle/gradle" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">基础</strong><a href="/training/ch1/intro.html" class="mobile-nav-link">Gradle介绍</a><a href="/training/ch2/install.html" class="mobile-nav-link">下载和安装</a><strong class="mobile-nav-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="mobile-nav-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="mobile-nav-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="mobile-nav-link">第一个脚本</a><a href="/training/ch3/run.html" class="mobile-nav-link">打包和运行</a><strong class="mobile-nav-title">仓库</strong><a href="/training/ch4/wtf.html" class="mobile-nav-link">什么是仓库</a><a href="/training/ch4/type.html" class="mobile-nav-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="mobile-nav-link">搭建私有仓库(nexus)</a><strong class="mobile-nav-title">依赖</strong><a href="/training/ch5/wtf.html" class="mobile-nav-link">何为依赖</a><a href="/training/ch5/gav.html" class="mobile-nav-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="mobile-nav-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="mobile-nav-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="mobile-nav-link">依赖的上传与发布</a><strong class="mobile-nav-title">IDE集成</strong><a href="/training/ch14/idea.html" class="mobile-nav-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="mobile-nav-link">与eclipse集成</a><strong class="mobile-nav-title">附录</strong><a href="/training/appendix/command.html" class="mobile-nav-link">附录 A-Gradle命令详解</a><strong class="mobile-nav-title">其它</strong><a href="/training/tag.html" class="mobile-nav-link">其他</a><a href="/training/troubleshooting.html" class="mobile-nav-link">寻求帮助</a><a href="/training/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>正體中文</span></span>
+    <select id="mobile-lang-select" data-canonical="training/index.html">
+      
+        <option value="zh-tw" selected>正體中文</option>
+      
+        <option value="zh-cn">简体中文</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/lang_select.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<!-- endbuild -->
+<script src="https://cdn.jsdelivr.net/retinajs/1.3.0/retina.min.js" async></script>
+
+<!-- Algolia -->
+
+
+</body>
+</html>

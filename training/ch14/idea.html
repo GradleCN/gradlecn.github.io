@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>与IDEA集成 | Gradle 中文用户组</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://gradlecn.org/training/ch14/idea.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-tw" href="https://gradlecn.org/zh-tw/training/ch14/idea.html">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://gradlecn.org/zh-cn/training/ch14/idea.html">
+    
+  
+  <!-- Icon -->
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link href="/vendors/semantic.min.css" rel="stylesheet" type="text/css">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+	<link href="/vendors/jquery.terminal-0.9.3.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Gradle 中文用户组">
+  <!-- Open Graph -->
+  <meta name="description" content="IDEA中Gradle插件的使用Idea本身已经集成了Gradle插件,你可以在File | Settings | Build, Execution, Deployment | Build Tools | Gradle 下找到 相关配置
+配置
+本文基于IDEA 2016.2
+
+
+
+
+配置项
+说明
+
+
+
+
+Linked Gradle projects
+所有Gradle添加了Gradle支持的项目列表">
+<meta property="og:type" content="website">
+<meta property="og:title" content="与IDEA集成">
+<meta property="og:url" content="https://gradlecn.org/training/ch14/idea.html">
+<meta property="og:site_name" content="Gradle 中文用户组">
+<meta property="og:description" content="IDEA中Gradle插件的使用Idea本身已经集成了Gradle插件,你可以在File | Settings | Build, Execution, Deployment | Build Tools | Gradle 下找到 相关配置
+配置
+本文基于IDEA 2016.2
+
+
+
+
+配置项
+说明
+
+
+
+
+Linked Gradle projects
+所有Gradle添加了Gradle支持的项目列表">
+<meta property="og:image" content="https://gradlecn.org/img/gradle_wrapper_custom.png">
+<meta property="og:image" content="https://gradlecn.org/img/gradletool.png">
+<meta property="og:updated_time" content="2016-08-27T02:33:56.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="与IDEA集成">
+<meta name="twitter:description" content="IDEA中Gradle插件的使用Idea本身已经集成了Gradle插件,你可以在File | Settings | Build, Execution, Deployment | Build Tools | Gradle 下找到 相关配置
+配置
+本文基于IDEA 2016.2
+
+
+
+
+配置项
+说明
+
+
+
+
+Linked Gradle projects
+所有Gradle添加了Gradle支持的项目列表">
+<meta name="twitter:image" content="https://gradlecn.org/img/gradle_wrapper_custom.png">
+<meta name="twitter:site" content="gradlecn">
+<meta property="fb:admins" content="100000247608790">
+  <!-- Google Analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4910098-10', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+  
+    <a href="/zh-cn/" id="logo"></a>
+    
+    <nav id="main-nav">
+      <a href="#" class="main-nav-link" alt="(建设中)">用户手册</a>
+      <a href="/zh-cn/training/" class="main-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/about/" class="main-nav-link" target="_self">关于</a>
+      <a href="https://github.com/gradle/gradle" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <div id="lang-select-wrap">
+      <label id="lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></label>
+      <select id="lang-select" data-canonical="training/ch14/idea.html">
+        
+          <option value="zh-tw">正體中文</option>
+        
+          <option value="zh-cn" selected>简体中文</option>
+        
+      </select>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">与IDEA集成</h1>
+                <a href="https://github.com/hexojs/site/edit/master/source/training/ch14/idea.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h4 id="IDEA中Gradle插件的使用" class="article-heading"><a href="#IDEA中Gradle插件的使用" class="headerlink" title="IDEA中Gradle插件的使用"></a>IDEA中Gradle插件的使用<a class="article-anchor" href="#IDEA中Gradle插件的使用" aria-hidden="true"></a></h4><p>Idea本身已经集成了Gradle插件,你可以在File | Settings | Build, Execution, Deployment | Build Tools | Gradle 下找到 相关配置</p>
+<h4 id="配置" class="article-heading"><a href="#配置" class="headerlink" title="配置"></a>配置<a class="article-anchor" href="#配置" aria-hidden="true"></a></h4><blockquote>
+<p>本文基于IDEA 2016.2</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linked Gradle projects</td>
+<td>所有Gradle添加了Gradle支持的项目列表</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>项目相关配置</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use auto-import</td>
+<td>是否开启自动导入,若开启修改gradle脚本文件后会自动检测变化并对项目进行刷新</td>
+</tr>
+<tr>
+<td>Create directories for empty content roots automatically</td>
+<td>导入或者创建gradle项目时,是否自动创建<a href="../ch3/1.项目结构.md">标准目录结构</a></td>
+</tr>
+<tr>
+<td>Create separate module per source set</td>
+<td>让每个模块单独采用Gradle约定的source set结构去执行构建</td>
+</tr>
+<tr>
+<td>Use default gradle wrapper (recommended)</td>
+<td>使用Gradle Wrapper(如果一定要翻译的话,可以称之为Gradle 包装器),这可以使得项目组成员不必预先安装好gradle即可执行gradle脚本,同时也便于统一项目所使用的gradle版本,当然虽说是不必预装其实是它会自己去官网帮你下载一个,然而gradle安装包体积不小同时又有墙的过滤,所以开启此项最好事先备好梯子.</td>
+</tr>
+<tr>
+<td>Use gradle wrapper task configuration</td>
+<td>自定义Gradle Wrapper配置,如可以更改发行包下载地址为你的内网地址便不存在上一条中的翻墙\下载失败\速度慢的问题了,示例代码<img src="img/gradle_wrapper_custom.png" alt="gradle_wrapper_custom.png"></td>
+</tr>
+<tr>
+<td>Use local gradle distribution</td>
+<td>采用本地安装的Gradle执行脚本</td>
+</tr>
+<tr>
+<td>Gradle home</td>
+<td>选择你的Gradle安装目录即可,无需选择到bin</td>
+</tr>
+<tr>
+<td>Gradle JVM</td>
+<td>选择构建Gradle项目使用的JVM,默认是项目采用的JDK</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>全局相关配置</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Offline work</td>
+<td>离线模式,开启离线模式后,Gradle将不会联网查找依赖,而是仅从本地缓存中查找,所以要慎重开启此选项</td>
+</tr>
+<tr>
+<td>Service directory path</td>
+<td>修改Gradle的默认缓存目录,该项也可以通过添加GRADLE_USER_HOME环境变量进行设置,默认值是 «USER_HOME»/.gradle文件夹,更多设置方式参考 <a href="https://github.com/pkaq/GradleSide/tree/master/12-gradleCacheHome" target="_blank" rel="external">如何修改Gradle的缓存目录</a></td>
+</tr>
+<tr>
+<td>Gradle VM options -</td>
+<td>设置jvm参数,可以采用空格分隔不同的参数设置 比如 “ -client -ea -Xmx1024m” 也可以通过Gradle的-D参数对相关参数进行设置</td>
+</tr>
+</tbody>
+</table>
+<h4 id="应用" class="article-heading"><a href="#应用" class="headerlink" title="应用"></a>应用<a class="article-anchor" href="#应用" aria-hidden="true"></a></h4><p>看到你的IDEA右侧竖向的标签页,找到gradle点开可以在这里看到你的项目以及相应任务,双击或者右键可以执行相应任务.<br>如果未开启auto import选项,可以点击菜单上方的蓝色圈圈 进行手动同步</p>
+<h4 id="为已有项目添加Gradle支持" class="article-heading"><a href="#为已有项目添加Gradle支持" class="headerlink" title="为已有项目添加Gradle支持"></a>为已有项目添加Gradle支持<a class="article-anchor" href="#为已有项目添加Gradle支持" aria-hidden="true"></a></h4><p>可以通过重新import 或者 关闭项目 重新打开 会自动弹出引导窗口 进行相关配置<br>这里需要保证你的gradle脚本没有问题,否则及时完成引导设置右侧也无法看到gradle页签的.</p>
+<h4 id="项目文件" class="article-heading"><a href="#项目文件" class="headerlink" title="项目文件"></a>项目文件<a class="article-anchor" href="#项目文件" aria-hidden="true"></a></h4><ul>
+<li>.gradle gradle项目产生文件（自动编译工具产生的文件） </li>
+<li>build 自动构建时生成文件的地方 </li>
+<li>gradle 自动完成gradle环境支持文件夹 </li>
+<li>build.gradle gradle 项目自动编译的配置文件 </li>
+<li>gradle.properties gradle 运行环境配置文件 </li>
+<li>gradlew 自动完成 gradle 环境的linux mac 脚本，配合gradle 文件夹使用 代替gradle 命令实现自动完成gradle环境搭建,配合gradle文件夹的内容</li>
+<li><p>gradlew.bat 自动完成 gradle 环境的windows 脚本，配合gradle 文件夹使用 </p>
+<blockquote>
+<p>上面两个文件会做如下几件事情<br>1.解析 gradle/wrapper/gradle-wrapper.properties 文件，获取项目需要的 gradle 版本下载地址<br>2.判断本地用户目录下的 ./gradle 目录下是否存在该版本，不存在该版本，走第3点，存在走第4点<br>3.下载 gradle-wrapper.properties 指定版本，并解压到用户目录的下 ./gradle 文件下<br>4.利用 ./gradle 目录下对应的版本的 gradle 进行相应自动编译操作</p>
+</blockquote>
+</li>
+<li><p>setting.gradle gradle 项目的子项目包含文件 </p>
+</li>
+</ul>
+<h4 id="Gradle工具窗口" class="article-heading"><a href="#Gradle工具窗口" class="headerlink" title="Gradle工具窗口"></a>Gradle工具窗口<a class="article-anchor" href="#Gradle工具窗口" aria-hidden="true"></a></h4><p>可以通过View -&gt; Tool windows -&gt; Gradle 打开,也可以从右侧纵向标签页点击打开.</p>
+<p><img src="img/gradletool.png" alt="gradletool.png"></p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2016-08-27T02:33:56.931Z" itemprop="dateModified">上次更新：2016-08-27</time>
+                <a href="/training/ch1/intro.html" class="article-footer-next" title="Gradle介绍"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gradlecn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#IDEA中Gradle插件的使用"><span class="toc-text">IDEA中Gradle插件的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应用"><span class="toc-text">应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为已有项目添加Gradle支持"><span class="toc-text">为已有项目添加Gradle支持</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目文件"><span class="toc-text">项目文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Gradle工具窗口"><span class="toc-text">Gradle工具窗口</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner"><strong class="sidebar-title">基础</strong><a href="/training/ch1/intro.html" class="sidebar-link">Gradle介绍</a><a href="/training/ch2/install.html" class="sidebar-link">下载和安装</a><strong class="sidebar-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="sidebar-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="sidebar-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="sidebar-link">第一个脚本</a><a href="/training/ch3/run.html" class="sidebar-link">打包和运行</a><strong class="sidebar-title">仓库</strong><a href="/training/ch4/wtf.html" class="sidebar-link">什么是仓库</a><a href="/training/ch4/type.html" class="sidebar-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="sidebar-link">搭建私有仓库(nexus)</a><strong class="sidebar-title">依赖</strong><a href="/training/ch5/wtf.html" class="sidebar-link">何为依赖</a><a href="/training/ch5/gav.html" class="sidebar-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="sidebar-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="sidebar-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="sidebar-link">依赖的上传与发布</a><strong class="sidebar-title">IDE集成</strong><a href="/training/ch14/idea.html" class="sidebar-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="sidebar-link">与eclipse集成</a><strong class="sidebar-title">附录</strong><a href="/training/appendix/command.html" class="sidebar-link">附录 A-Gradle命令详解</a><strong class="sidebar-title">其它</strong><a href="/training/tag.html" class="sidebar-link">其他</a><a href="/training/troubleshooting.html" class="sidebar-link">寻求帮助</a><a href="/training/contributing.html" class="sidebar-link">贡献</a></div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2016 <a href="https://zespia.tw/" target="_blank">PKAQ</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://twitter.com/gradlecn" class="footer-link" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://github.com/gradle/gradle" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/zh-cn/training/" class="mobile-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="mobile-nav-link" target="_blank">示例</a><a href="/news/" class="mobile-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="mobile-nav-link" target="_blank">博客</a><a href="/about/" class="mobile-nav-link" target="_self">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/gradle/gradle" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">基础</strong><a href="/training/ch1/intro.html" class="mobile-nav-link">Gradle介绍</a><a href="/training/ch2/install.html" class="mobile-nav-link">下载和安装</a><strong class="mobile-nav-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="mobile-nav-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="mobile-nav-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="mobile-nav-link">第一个脚本</a><a href="/training/ch3/run.html" class="mobile-nav-link">打包和运行</a><strong class="mobile-nav-title">仓库</strong><a href="/training/ch4/wtf.html" class="mobile-nav-link">什么是仓库</a><a href="/training/ch4/type.html" class="mobile-nav-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="mobile-nav-link">搭建私有仓库(nexus)</a><strong class="mobile-nav-title">依赖</strong><a href="/training/ch5/wtf.html" class="mobile-nav-link">何为依赖</a><a href="/training/ch5/gav.html" class="mobile-nav-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="mobile-nav-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="mobile-nav-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="mobile-nav-link">依赖的上传与发布</a><strong class="mobile-nav-title">IDE集成</strong><a href="/training/ch14/idea.html" class="mobile-nav-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="mobile-nav-link">与eclipse集成</a><strong class="mobile-nav-title">附录</strong><a href="/training/appendix/command.html" class="mobile-nav-link">附录 A-Gradle命令详解</a><strong class="mobile-nav-title">其它</strong><a href="/training/tag.html" class="mobile-nav-link">其他</a><a href="/training/troubleshooting.html" class="mobile-nav-link">寻求帮助</a><a href="/training/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="training/ch14/idea.html">
+      
+        <option value="zh-tw">正體中文</option>
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/lang_select.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<!-- endbuild -->
+<script src="https://cdn.jsdelivr.net/retinajs/1.3.0/retina.min.js" async></script>
+
+<!-- Algolia -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript">
+document.getElementById('search-input-wrap').classList.add('on');
+docsearch({
+  apiKey: '833e76b8e5868b5ca61c5725dcabe526',
+  indexName: 'gradle_zh-cn',
+  inputSelector: '#search-input'
+});
+</script>
+
+
+</body>
+</html>

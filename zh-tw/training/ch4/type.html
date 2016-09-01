@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>仓库的分类 | Gradle 中文用户组</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://gradlecn.org/zh-tw/training/ch4/type.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-tw" href="https://gradlecn.org/zh-tw/training/ch4/type.html">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://gradlecn.org/zh-cn/training/ch4/type.html">
+    
+  
+  <!-- Icon -->
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link href="/vendors/semantic.min.css" rel="stylesheet" type="text/css">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+	<link href="/vendors/jquery.terminal-0.9.3.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Gradle 中文用户组">
+  <!-- Open Graph -->
+  <meta name="description" content="仓库大体可以分为:本地仓库、中央仓库、本地目录点击后面的连接可以查看,关于这几种仓库的使用方式
+
+本地仓库　　即本地硬盘存储目录,默认情况下会在系统的用户目录下创建一个.gradle文件夹,所有的依赖都会缓存到此,在依赖检查时,会先检索本地缓存,如果存在那么会直接采用本地缓存目录中存放的依赖,从而节约带宽和时间.　　如果想要更改本地缓存目录位置,可以参考Gradle指定/修改缓存目录通过如下几种方">
+<meta property="og:type" content="website">
+<meta property="og:title" content="仓库的分类">
+<meta property="og:url" content="https://gradlecn.org/zh-tw/training/ch4/type.html">
+<meta property="og:site_name" content="Gradle 中文用户组">
+<meta property="og:description" content="仓库大体可以分为:本地仓库、中央仓库、本地目录点击后面的连接可以查看,关于这几种仓库的使用方式
+
+本地仓库　　即本地硬盘存储目录,默认情况下会在系统的用户目录下创建一个.gradle文件夹,所有的依赖都会缓存到此,在依赖检查时,会先检索本地缓存,如果存在那么会直接采用本地缓存目录中存放的依赖,从而节约带宽和时间.　　如果想要更改本地缓存目录位置,可以参考Gradle指定/修改缓存目录通过如下几种方">
+<meta property="og:updated_time" content="2016-08-27T02:46:43.120Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="仓库的分类">
+<meta name="twitter:description" content="仓库大体可以分为:本地仓库、中央仓库、本地目录点击后面的连接可以查看,关于这几种仓库的使用方式
+
+本地仓库　　即本地硬盘存储目录,默认情况下会在系统的用户目录下创建一个.gradle文件夹,所有的依赖都会缓存到此,在依赖检查时,会先检索本地缓存,如果存在那么会直接采用本地缓存目录中存放的依赖,从而节约带宽和时间.　　如果想要更改本地缓存目录位置,可以参考Gradle指定/修改缓存目录通过如下几种方">
+<meta name="twitter:site" content="gradlecn">
+<meta property="fb:admins" content="100000247608790">
+  <!-- Google Analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4910098-10', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+  
+    <a href="/zh-tw/" id="logo"></a>
+    
+    <nav id="main-nav">
+      <a href="#" class="main-nav-link" alt="(建设中)">用户手册</a>
+      <a href="/zh-tw/training/" class="main-nav-link" target="_self">入門教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新聞</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/about/" class="main-nav-link" target="_self">关于</a>
+      <a href="https://github.com/gradle/gradle" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <div id="lang-select-wrap">
+      <label id="lang-select-label"><i class="fa fa-globe"></i><span>正體中文</span></label>
+      <select id="lang-select" data-canonical="training/ch4/type.html">
+        
+          <option value="zh-tw" selected>正體中文</option>
+        
+          <option value="zh-cn">简体中文</option>
+        
+      </select>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">仓库的分类</h1>
+                <a href="https://github.com/hexojs/site/edit/master/source/zh-tw/training/ch4/type.md" class="article-edit-link" title="改進本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>仓库大体可以分为:本地仓库、中央仓库、本地目录点击后面的连接可以查看,<a href="https://github.com/pkaq/GradleSide/blob/master/08-repositories/build.gradle" target="_blank" rel="external">关于这几种仓库的使用方式</a></p>
+<ul>
+<li><p>本地仓库<br>　　即本地硬盘存储目录,默认情况下会在系统的用户目录下创建一个.gradle文件夹,所有的依赖都会缓存到此,在依赖检查时,会先检索本地缓存,如果存在那么会直接采用本地缓存目录中存放的依赖,从而节约带宽和时间.<br>　　如果想要更改本地缓存目录位置,可以参考<a href="https://github.com/pkaq/GradleSide/tree/master/12-gradleCacheHome" target="_blank" rel="external">Gradle指定/修改缓存目录</a>通过如下几种方式修改,</p>
+<ul>
+<li>法1.通过添加系统变量 GRADLE_USER_HOME</li>
+<li>法2.设置虚拟机参数 org.gradle.user.home 属性</li>
+<li>法3.通过命令行-g或者 –gradle-user-home 参数设置</li>
+</ul>
+</li>
+<li><p>远程仓库<br>　　远程仓库又分为以下三种</p>
+<ul>
+<li>中央仓库<br>　　最核心的中央仓库,其中包含了绝大多数构件(jar包),一般而言java项目的依赖都可以在这找到,比较常用的有<br><a href="http://mvnrepository.com/" target="_blank" rel="external"><code>mavenCenter()</code></a>,<a href="https://bintray.com/bintray/jcenter" target="_blank" rel="external"><code>jcenter()</code></a></li>
+<li>公共仓库<br>　　有好多良心的公司搭建了一些公共库可以使用,比如osc的 osc repo</li>
+<li>私有仓库<br>　　这里通常指的是公司内部或者个人搭建的私服,可以通过<a href="http://www.sonatype.org/nexus/" target="_blank" rel="external">Nexus</a>或者<a href="http://www.jfrog.com/home/v_artifactory_opensource_overview" target="_blank" rel="external">Artifactory</a>,搭建私有服务器,采用这种方式不仅可以有效降低外网带宽,还可以加快构建速度,增强稳定性.并且当诸如 oracle jdbc驱动这种不存在于中央仓库的jar可以上传到私服而不用采用本地目录的方式进行加载.特别是在条件有限的情况下,诸如开发人员连接外网有限制,公司没有提供VPN且自己又没有梯子的情况下,搭建一台配置VPN的私服绝对是居家旅行,码字构建的必需.要知道在天朝很多情况下没有VPN要么很慢,要么连不上.</li>
+</ul>
+</li>
+<li><p>本地目录<br>　　gradle可以直接采用本地目录作为仓库加载所需构件,诸如上文提到的想oracle jdbc驱动这种在中央仓库不存在的流氓构件,如果你恰好又没有条件搭建私服的话,可以像传统方式一样放到<code>lib</code>下直接从本地加载.至于oracle jdbc驱动为何不在中央仓库的问题不在本文讨论范围,欲知详情的,自行搜索</p>
+</li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2016-08-27T02:46:43.120Z" itemprop="dateModified">上次更新：2016-08-27</time>
+                <a href="/training/ch1/intro.html" class="article-footer-next" title="Gradle介绍"><span>下一頁</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gradlecn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目錄</strong>
+              
+              <a href="#" id="article-toc-top">回到頂部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner"><strong class="sidebar-title">基础</strong><a href="/training/ch1/intro.html" class="sidebar-link">Gradle介绍</a><a href="/training/ch2/install.html" class="sidebar-link">下载和安装</a><strong class="sidebar-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="sidebar-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="sidebar-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="sidebar-link">第一个脚本</a><a href="/training/ch3/run.html" class="sidebar-link">打包和运行</a><strong class="sidebar-title">仓库</strong><a href="/training/ch4/wtf.html" class="sidebar-link">什么是仓库</a><a href="/training/ch4/type.html" class="sidebar-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="sidebar-link">搭建私有仓库(nexus)</a><strong class="sidebar-title">依赖</strong><a href="/training/ch5/wtf.html" class="sidebar-link">何为依赖</a><a href="/training/ch5/gav.html" class="sidebar-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="sidebar-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="sidebar-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="sidebar-link">依赖的上传与发布</a><strong class="sidebar-title">IDE集成</strong><a href="/training/ch14/idea.html" class="sidebar-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="sidebar-link">与eclipse集成</a><strong class="sidebar-title">附录</strong><a href="/training/appendix/command.html" class="sidebar-link">附录 A-Gradle命令详解</a><strong class="sidebar-title">其它</strong><a href="/training/tag.html" class="sidebar-link">其他</a><a href="/training/troubleshooting.html" class="sidebar-link">寻求帮助</a><a href="/training/contributing.html" class="sidebar-link">贡献</a></div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2016 <a href="https://zespia.tw/" target="_blank">PKAQ</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://twitter.com/gradlecn" class="footer-link" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://github.com/gradle/gradle" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/zh-tw/training/" class="mobile-nav-link" target="_self">入門教程</a><a href="https://github.com/pkaq/gradleside" class="mobile-nav-link" target="_blank">示例</a><a href="/news/" class="mobile-nav-link" target="_self">新聞</a><a href="http://pkaq.org" class="mobile-nav-link" target="_blank">博客</a><a href="/about/" class="mobile-nav-link" target="_self">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/gradle/gradle" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">基础</strong><a href="/training/ch1/intro.html" class="mobile-nav-link">Gradle介绍</a><a href="/training/ch2/install.html" class="mobile-nav-link">下载和安装</a><strong class="mobile-nav-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="mobile-nav-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="mobile-nav-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="mobile-nav-link">第一个脚本</a><a href="/training/ch3/run.html" class="mobile-nav-link">打包和运行</a><strong class="mobile-nav-title">仓库</strong><a href="/training/ch4/wtf.html" class="mobile-nav-link">什么是仓库</a><a href="/training/ch4/type.html" class="mobile-nav-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="mobile-nav-link">搭建私有仓库(nexus)</a><strong class="mobile-nav-title">依赖</strong><a href="/training/ch5/wtf.html" class="mobile-nav-link">何为依赖</a><a href="/training/ch5/gav.html" class="mobile-nav-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="mobile-nav-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="mobile-nav-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="mobile-nav-link">依赖的上传与发布</a><strong class="mobile-nav-title">IDE集成</strong><a href="/training/ch14/idea.html" class="mobile-nav-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="mobile-nav-link">与eclipse集成</a><strong class="mobile-nav-title">附录</strong><a href="/training/appendix/command.html" class="mobile-nav-link">附录 A-Gradle命令详解</a><strong class="mobile-nav-title">其它</strong><a href="/training/tag.html" class="mobile-nav-link">其他</a><a href="/training/troubleshooting.html" class="mobile-nav-link">寻求帮助</a><a href="/training/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>正體中文</span></span>
+    <select id="mobile-lang-select" data-canonical="training/ch4/type.html">
+      
+        <option value="zh-tw" selected>正體中文</option>
+      
+        <option value="zh-cn">简体中文</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/lang_select.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<!-- endbuild -->
+<script src="https://cdn.jsdelivr.net/retinajs/1.3.0/retina.min.js" async></script>
+
+<!-- Algolia -->
+
+
+</body>
+</html>

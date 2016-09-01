@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>脚本结构 | Gradle 中文用户组</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://gradlecn.org/zh-tw/training/ch3/scriptstructure.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-tw" href="https://gradlecn.org/zh-tw/training/ch3/scriptstructure.html">
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://gradlecn.org/zh-cn/training/ch3/scriptstructure.html">
+    
+  
+  <!-- Icon -->
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link href="/vendors/semantic.min.css" rel="stylesheet" type="text/css">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  <link rel="stylesheet" href="/css/navy.css">
+  <!-- endbuild -->
+	<link href="/vendors/jquery.terminal-0.9.3.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="Gradle 中文用户组">
+  <!-- Open Graph -->
+  <meta name="description" content="一个简单的Gralde脚本,或许包含如下内容,其中标明可选的都是可以删掉的部分
+
+插件引入:声明你所需的插件
+属性定义(可选):定义扩展属性
+局部变量(可选):定义局部变量
+属性修改(可选):指定project自带属性
+仓库定义:指明要从哪个仓库下载jar包
+依赖声明:声明项目中需要哪些依赖
+自定义任务(可选):自定义一些任务
+
+//应用插件,这里引入了Gradle的Java插件,此插件提供了Ja">
+<meta property="og:type" content="website">
+<meta property="og:title" content="脚本结构">
+<meta property="og:url" content="https://gradlecn.org/zh-tw/training/ch3/scriptstructure.html">
+<meta property="og:site_name" content="Gradle 中文用户组">
+<meta property="og:description" content="一个简单的Gralde脚本,或许包含如下内容,其中标明可选的都是可以删掉的部分
+
+插件引入:声明你所需的插件
+属性定义(可选):定义扩展属性
+局部变量(可选):定义局部变量
+属性修改(可选):指定project自带属性
+仓库定义:指明要从哪个仓库下载jar包
+依赖声明:声明项目中需要哪些依赖
+自定义任务(可选):自定义一些任务
+
+//应用插件,这里引入了Gradle的Java插件,此插件提供了Ja">
+<meta property="og:updated_time" content="2016-08-27T02:45:42.445Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="脚本结构">
+<meta name="twitter:description" content="一个简单的Gralde脚本,或许包含如下内容,其中标明可选的都是可以删掉的部分
+
+插件引入:声明你所需的插件
+属性定义(可选):定义扩展属性
+局部变量(可选):定义局部变量
+属性修改(可选):指定project自带属性
+仓库定义:指明要从哪个仓库下载jar包
+依赖声明:声明项目中需要哪些依赖
+自定义任务(可选):自定义一些任务
+
+//应用插件,这里引入了Gradle的Java插件,此插件提供了Ja">
+<meta name="twitter:site" content="gradlecn">
+<meta property="fb:admins" content="100000247608790">
+  <!-- Google Analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4910098-10', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+  
+    <a href="/zh-tw/" id="logo"></a>
+    
+    <nav id="main-nav">
+      <a href="#" class="main-nav-link" alt="(建设中)">用户手册</a>
+      <a href="/zh-tw/training/" class="main-nav-link" target="_self">入門教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新聞</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/about/" class="main-nav-link" target="_self">关于</a>
+      <a href="https://github.com/gradle/gradle" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Search...">
+      </div>
+    </nav>
+    <div id="lang-select-wrap">
+      <label id="lang-select-label"><i class="fa fa-globe"></i><span>正體中文</span></label>
+      <select id="lang-select" data-canonical="training/ch3/scriptstructure.html">
+        
+          <option value="zh-tw" selected>正體中文</option>
+        
+          <option value="zh-cn">简体中文</option>
+        
+      </select>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">脚本结构</h1>
+                <a href="https://github.com/hexojs/site/edit/master/source/zh-tw/training/ch3/scriptstructure.md" class="article-edit-link" title="改進本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>一个简单的Gralde脚本,或许包含如下内容,其中标明可选的都是可以删掉的部分</p>
+<ul>
+<li>插件引入:声明你所需的插件</li>
+<li>属性定义(可选):定义扩展属性</li>
+<li>局部变量(可选):定义局部变量</li>
+<li>属性修改(可选):指定project自带属性</li>
+<li>仓库定义:指明要从哪个仓库下载jar包</li>
+<li>依赖声明:声明项目中需要哪些依赖</li>
+<li>自定义任务(可选):自定义一些任务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//应用插件,这里引入了Gradle的Java插件,此插件提供了Java构建和测试所需的一切。</div><div class="line">apply plugin: &apos;java&apos;</div><div class="line">//定义扩展属性(可选)</div><div class="line">ext &#123;</div><div class="line">	foo=&quot;foo&quot;</div><div class="line">&#125;</div><div class="line">//定义局部变量(可选)</div><div class="line">def bar=&quot;bar&quot;</div><div class="line"></div><div class="line">//修改项目属性(可选)</div><div class="line">group &apos;pkaq&apos;</div><div class="line">version &apos;1.0-SNAPSHOT&apos;</div><div class="line"></div><div class="line">//定义仓库,当然gradle也可以使用各maven库 ivy库 私服 本地文件等,后续章节会详细介绍</div><div class="line">repositories &#123;</div><div class="line">    jcenter()</div><div class="line">&#125;</div><div class="line"></div><div class="line">//定义依赖,这里采用了g:a:v简写方式,加号代表了最新版本</div><div class="line">dependencies &#123;</div><div class="line">    compile &quot;cn.pkaq:ptj.tiger:+&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//自定义任务(可选)</div><div class="line">task printFoobar &#123;</div><div class="line">	println &quot;$&#123;foo&#125;__$&#123;bar&#125;&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2016-08-27T02:45:42.445Z" itemprop="dateModified">上次更新：2016-08-27</time>
+                <a href="/training/ch1/intro.html" class="article-footer-next" title="Gradle介绍"><span>下一頁</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gradlecn"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目錄</strong>
+              
+              <a href="#" id="article-toc-top">回到頂部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner"><strong class="sidebar-title">基础</strong><a href="/training/ch1/intro.html" class="sidebar-link">Gradle介绍</a><a href="/training/ch2/install.html" class="sidebar-link">下载和安装</a><strong class="sidebar-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="sidebar-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="sidebar-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="sidebar-link">第一个脚本</a><a href="/training/ch3/run.html" class="sidebar-link">打包和运行</a><strong class="sidebar-title">仓库</strong><a href="/training/ch4/wtf.html" class="sidebar-link">什么是仓库</a><a href="/training/ch4/type.html" class="sidebar-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="sidebar-link">搭建私有仓库(nexus)</a><strong class="sidebar-title">依赖</strong><a href="/training/ch5/wtf.html" class="sidebar-link">何为依赖</a><a href="/training/ch5/gav.html" class="sidebar-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="sidebar-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="sidebar-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="sidebar-link">依赖的上传与发布</a><strong class="sidebar-title">IDE集成</strong><a href="/training/ch14/idea.html" class="sidebar-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="sidebar-link">与eclipse集成</a><strong class="sidebar-title">附录</strong><a href="/training/appendix/command.html" class="sidebar-link">附录 A-Gradle命令详解</a><strong class="sidebar-title">其它</strong><a href="/training/tag.html" class="sidebar-link">其他</a><a href="/training/troubleshooting.html" class="sidebar-link">寻求帮助</a><a href="/training/contributing.html" class="sidebar-link">贡献</a></div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2016 <a href="https://zespia.tw/" target="_blank">PKAQ</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://twitter.com/gradlecn" class="footer-link" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://github.com/gradle/gradle" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/zh-tw/training/" class="mobile-nav-link" target="_self">入門教程</a><a href="https://github.com/pkaq/gradleside" class="mobile-nav-link" target="_blank">示例</a><a href="/news/" class="mobile-nav-link" target="_self">新聞</a><a href="http://pkaq.org" class="mobile-nav-link" target="_blank">博客</a><a href="/about/" class="mobile-nav-link" target="_self">关于</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/gradle/gradle" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">基础</strong><a href="/training/ch1/intro.html" class="mobile-nav-link">Gradle介绍</a><a href="/training/ch2/install.html" class="mobile-nav-link">下载和安装</a><strong class="mobile-nav-title">快速入门</strong><a href="/training/ch3/projectstrure.html" class="mobile-nav-link">项目结构</a><a href="/training/ch3/scriptstructure.html" class="mobile-nav-link">脚本结构</a><a href="/training/ch3/fisrtblood.html" class="mobile-nav-link">第一个脚本</a><a href="/training/ch3/run.html" class="mobile-nav-link">打包和运行</a><strong class="mobile-nav-title">仓库</strong><a href="/training/ch4/wtf.html" class="mobile-nav-link">什么是仓库</a><a href="/training/ch4/type.html" class="mobile-nav-link">仓库的分类</a><a href="/training/ch4/nexus.html" class="mobile-nav-link">搭建私有仓库(nexus)</a><strong class="mobile-nav-title">依赖</strong><a href="/training/ch5/wtf.html" class="mobile-nav-link">何为依赖</a><a href="/training/ch5/gav.html" class="mobile-nav-link">依赖的坐标与范围</a><a href="/training/ch5/transitive.html" class="mobile-nav-link">依赖的传递与排除</a><a href="/training/ch5/updateandcache.html" class="mobile-nav-link">依赖的更新与缓存</a><a href="/training/ch5/release.html" class="mobile-nav-link">依赖的上传与发布</a><strong class="mobile-nav-title">IDE集成</strong><a href="/training/ch14/idea.html" class="mobile-nav-link">与IDEA集成</a><a href="/training/ch14/eclipse.html" class="mobile-nav-link">与eclipse集成</a><strong class="mobile-nav-title">附录</strong><a href="/training/appendix/command.html" class="mobile-nav-link">附录 A-Gradle命令详解</a><strong class="mobile-nav-title">其它</strong><a href="/training/tag.html" class="mobile-nav-link">其他</a><a href="/training/troubleshooting.html" class="mobile-nav-link">寻求帮助</a><a href="/training/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>正體中文</span></span>
+    <select id="mobile-lang-select" data-canonical="training/ch3/scriptstructure.html">
+      
+        <option value="zh-tw" selected>正體中文</option>
+      
+        <option value="zh-cn">简体中文</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- build:js build/js/main.js -->
+<script src="/js/lang_select.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/mobile_nav.js"></script>
+<!-- endbuild -->
+<script src="https://cdn.jsdelivr.net/retinajs/1.3.0/retina.min.js" async></script>
+
+<!-- Algolia -->
+
+
+</body>
+</html>
