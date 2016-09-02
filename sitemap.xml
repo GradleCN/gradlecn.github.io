@@ -37,13 +37,6 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/ch1/intro.html</loc>
-    
-    <lastmod>2016-08-27T06:19:23.383Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://gradlecn.org/training/ch1/intro.html</loc>
     
     <lastmod>2016-08-27T06:19:23.383Z</lastmod>
@@ -51,14 +44,21 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-tw/training/appendix/index.html</loc>
+    <loc>https://gradlecn.org/zh-cn/training/ch1/intro.html</loc>
+    
+    <lastmod>2016-08-27T06:19:23.383Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gradlecn.org/zh-cn/training/appendix/index.html</loc>
     
     <lastmod>2016-08-27T03:44:13.380Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/appendix/index.html</loc>
+    <loc>https://gradlecn.org/zh-tw/training/appendix/index.html</loc>
     
     <lastmod>2016-08-27T03:44:13.380Z</lastmod>
     
@@ -72,7 +72,7 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/ch14/eclipse.html</loc>
+    <loc>https://gradlecn.org/zh-tw/training/ch14/eclipse.html</loc>
     
     <lastmod>2016-08-27T03:21:10.152Z</lastmod>
     
@@ -86,7 +86,7 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-tw/training/ch14/eclipse.html</loc>
+    <loc>https://gradlecn.org/zh-cn/training/ch14/eclipse.html</loc>
     
     <lastmod>2016-08-27T03:21:10.152Z</lastmod>
     
@@ -100,13 +100,6 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/training/ch5/wtf.html</loc>
-    
-    <lastmod>2016-08-27T02:49:07.240Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://gradlecn.org/zh-tw/training/ch5/wtf.html</loc>
     
     <lastmod>2016-08-27T02:49:07.240Z</lastmod>
@@ -114,9 +107,9 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/ch5/updateandcache.html</loc>
+    <loc>https://gradlecn.org/training/ch5/wtf.html</loc>
     
-    <lastmod>2016-08-27T02:48:35.284Z</lastmod>
+    <lastmod>2016-08-27T02:49:07.240Z</lastmod>
     
   </url>
   
@@ -128,16 +121,16 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-tw/training/ch5/updateandcache.html</loc>
+    <loc>https://gradlecn.org/zh-cn/training/ch5/updateandcache.html</loc>
     
     <lastmod>2016-08-27T02:48:35.284Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/ch5/transitive.html</loc>
+    <loc>https://gradlecn.org/zh-tw/training/ch5/updateandcache.html</loc>
     
-    <lastmod>2016-08-27T02:48:14.882Z</lastmod>
+    <lastmod>2016-08-27T02:48:35.284Z</lastmod>
     
   </url>
   
@@ -156,6 +149,20 @@
   </url>
   
   <url>
+    <loc>https://gradlecn.org/zh-cn/training/ch5/transitive.html</loc>
+    
+    <lastmod>2016-08-27T02:48:14.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gradlecn.org/zh-cn/training/ch5/release.html</loc>
+    
+    <lastmod>2016-08-27T02:47:54.010Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://gradlecn.org/training/ch5/release.html</loc>
     
     <lastmod>2016-08-27T02:47:54.010Z</lastmod>
@@ -164,13 +171,6 @@
   
   <url>
     <loc>https://gradlecn.org/zh-tw/training/ch5/release.html</loc>
-    
-    <lastmod>2016-08-27T02:47:54.010Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://gradlecn.org/zh-cn/training/ch5/release.html</loc>
     
     <lastmod>2016-08-27T02:47:54.010Z</lastmod>
     
@@ -198,14 +198,14 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-tw/training/ch4/wtf.html</loc>
+    <loc>https://gradlecn.org/zh-cn/training/ch4/wtf.html</loc>
     
     <lastmod>2016-08-27T02:46:59.607Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/ch4/wtf.html</loc>
+    <loc>https://gradlecn.org/zh-tw/training/ch4/wtf.html</loc>
     
     <lastmod>2016-08-27T02:46:59.607Z</lastmod>
     
@@ -215,6 +215,13 @@
     <loc>https://gradlecn.org/training/ch4/wtf.html</loc>
     
     <lastmod>2016-08-27T02:46:59.607Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gradlecn.org/zh-cn/training/ch4/type.html</loc>
+    
+    <lastmod>2016-08-27T02:46:43.120Z</lastmod>
     
   </url>
   
@@ -233,20 +240,6 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/ch4/type.html</loc>
-    
-    <lastmod>2016-08-27T02:46:43.120Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://gradlecn.org/training/ch4/neuxs.html</loc>
-    
-    <lastmod>2016-08-27T02:46:04.883Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://gradlecn.org/zh-tw/training/ch4/neuxs.html</loc>
     
     <lastmod>2016-08-27T02:46:04.883Z</lastmod>
@@ -261,9 +254,9 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/training/ch3/scriptstructure.html</loc>
+    <loc>https://gradlecn.org/training/ch4/neuxs.html</loc>
     
-    <lastmod>2016-08-27T02:45:42.445Z</lastmod>
+    <lastmod>2016-08-27T02:46:04.883Z</lastmod>
     
   </url>
   
@@ -276,6 +269,13 @@
   
   <url>
     <loc>https://gradlecn.org/zh-tw/training/ch3/scriptstructure.html</loc>
+    
+    <lastmod>2016-08-27T02:45:42.445Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gradlecn.org/training/ch3/scriptstructure.html</loc>
     
     <lastmod>2016-08-27T02:45:42.445Z</lastmod>
     
@@ -310,14 +310,14 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/training/ch3/projectstrure.html</loc>
+    <loc>https://gradlecn.org/zh-cn/training/ch3/projectstrure.html</loc>
     
     <lastmod>2016-08-27T02:45:10.259Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/ch3/projectstrure.html</loc>
+    <loc>https://gradlecn.org/training/ch3/projectstrure.html</loc>
     
     <lastmod>2016-08-27T02:45:10.259Z</lastmod>
     
@@ -352,14 +352,14 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/training/ch2/install.html</loc>
+    <loc>https://gradlecn.org/zh-tw/training/ch2/install.html</loc>
     
     <lastmod>2016-08-27T02:44:31.304Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-tw/training/ch2/install.html</loc>
+    <loc>https://gradlecn.org/training/ch2/install.html</loc>
     
     <lastmod>2016-08-27T02:44:31.304Z</lastmod>
     
@@ -373,14 +373,14 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-tw/training/index.html</loc>
+    <loc>https://gradlecn.org/training/index.html</loc>
     
     <lastmod>2016-08-27T02:43:04.017Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gradlecn.org/training/index.html</loc>
+    <loc>https://gradlecn.org/zh-tw/training/index.html</loc>
     
     <lastmod>2016-08-27T02:43:04.017Z</lastmod>
     
@@ -394,13 +394,6 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-tw/training/troubleshooting.html</loc>
-    
-    <lastmod>2016-08-27T02:40:56.413Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://gradlecn.org/zh-cn/training/troubleshooting.html</loc>
     
     <lastmod>2016-08-27T02:40:56.413Z</lastmod>
@@ -408,14 +401,21 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-tw/training/ch14/idea.html</loc>
+    <loc>https://gradlecn.org/zh-tw/training/troubleshooting.html</loc>
+    
+    <lastmod>2016-08-27T02:40:56.413Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://gradlecn.org/zh-cn/training/ch14/idea.html</loc>
     
     <lastmod>2016-08-27T02:33:56.931Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/ch14/idea.html</loc>
+    <loc>https://gradlecn.org/zh-tw/training/ch14/idea.html</loc>
     
     <lastmod>2016-08-27T02:33:56.931Z</lastmod>
     
@@ -429,7 +429,7 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/appendix/command.html</loc>
+    <loc>https://gradlecn.org/training/appendix/command.html</loc>
     
     <lastmod>2016-08-27T02:33:32.593Z</lastmod>
     
@@ -443,7 +443,7 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/training/appendix/command.html</loc>
+    <loc>https://gradlecn.org/zh-cn/training/appendix/command.html</loc>
     
     <lastmod>2016-08-27T02:33:32.593Z</lastmod>
     
@@ -478,14 +478,14 @@
   </url>
   
   <url>
-    <loc>https://gradlecn.org/training/tag.html</loc>
+    <loc>https://gradlecn.org/zh-cn/training/tag.html</loc>
     
     <lastmod>2016-08-24T12:54:06.375Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gradlecn.org/zh-cn/training/tag.html</loc>
+    <loc>https://gradlecn.org/training/tag.html</loc>
     
     <lastmod>2016-08-24T12:54:06.375Z</lastmod>
     
