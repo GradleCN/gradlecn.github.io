@@ -28,7 +28,9 @@
 	<link href="/vendors/jquery.terminal-0.9.3.css" rel="stylesheet" type="text/css"/>
   <link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600&subset=latin,latin-ext' rel='stylesheet'>
   <link href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  -->
   <!-- RSS -->
   <link rel="alternate" href="/atom.xml" title="Gradle 中文用户组">
   <!-- Open Graph -->
@@ -49,7 +51,6 @@ gradle默认是采用增量打包的,每次打包后被打包的文件都会记�
 这个jar包默认会存放到你项目目录下的build\libs里   
 gradle默认是采用增量打包的,每次打包后被打包的文件都会记载一个快照,如果下次打包时没有更改是不会触发重新编译的">
 <meta name="twitter:site" content="gradlecn">
-<meta property="fb:admins" content="100000247608790">
   <!-- Google Analytics -->
   
 <script>
@@ -89,12 +90,14 @@ gradle默认是采用增量打包的,每次打包后被打包的文件都会记�
       <a href="#" class="main-nav-link" alt="(建设中)">用户手册</a>
       <a href="/zh-cn/training/" class="main-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/about/" class="main-nav-link" target="_self">关于</a>
       <a href="https://github.com/gradle/gradle" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+      <!-- 
       <div id="search-input-wrap">
         <div id="search-input-icon">
           <i class="fa fa-search"></i>
         </div>
         <input type="search" id="search-input" placeholder="Search...">
       </div>
+      -->
     </nav>
     <div id="lang-select-wrap">
       <label id="lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></label>
@@ -224,16 +227,6 @@ gradle默认是采用增量打包的,每次打包后被打包的文件都会记�
 <script src="https://cdn.jsdelivr.net/retinajs/1.3.0/retina.min.js" async></script>
 
 <!-- Algolia -->
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
-<script type="text/javascript">
-document.getElementById('search-input-wrap').classList.add('on');
-docsearch({
-  apiKey: '833e76b8e5868b5ca61c5725dcabe526',
-  indexName: 'gradle_zh-cn',
-  inputSelector: '#search-input'
-});
-</script>
 
 
 </body>
