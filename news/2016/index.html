@@ -112,20 +112,111 @@
   <header class="article-header">
     
       <h1>
-        <a href="/news/2016/09/25/gradle-3-1-released/" class="article-title" itemprop="name">Gradle 3.0  正式发布.</a>
+        <a href="/news/2016/12/13/gradle-3-2/" class="article-title" itemprop="name">Gradle 3.2  正式发布.</a>
       </h1>
     
-    <a href="/news/2016/09/25/gradle-3-1-released/" class="article-date"><time datetime="2016-09-25T00:00:00.000Z">2016-09-25</time></a>
+    <a href="/news/2016/12/13/gradle-3-2/" class="article-date"><time datetime="2016-12-13T00:00:00.000Z">2016-12-13</time></a>
   </header>
   <div class="article-content" itemprop="articleBody">
-    <p>The Gradle team is pleased to announce Gradle 3.1.</p>
-<p>Multi-project builds are a powerful feature with one significant constraint: the projects have to be in the same directory hierarchy. This doesn’t help if you want to work on code across multiple repositories, for example if you’re trying to fix a bug in a third-party open-source library that one of your projects depends on.</p>
-<p>Gradle 3.1 now supports this scenario with the introduction of Composite Builds for all users. It’s hard to understate just how important this feature is as it provides a whole new way of organizing your projects and builds. There is more work to be done in this area and the feature is currently incubating, but we encourage you to try it out and give us your feedback!</p>
-<p>Incremental Build is a similar feature in terms of impact and this release improves the control you have over its up-to-date checks. You can read about the details further down.</p>
-<p>As with many previous Gradle releases, you will also benefit from some performance improvements, this time in the form of faster dependency resolution. From testing, Android users specifically could see up to a 50% reduction in configuration and Android Studio sync time.</p>
-<p>Build cancellation has improved when using the Daemon. Cancelling a build with Ctrl-C after the first build no longer terminates the Gradle Daemon. </p>
-<p>Our Play Framework and Kotlin build script users will also be happy as 3.1 now has (limited) support for Play 2.5.x and the Kotlin build script support gets a more fully-featured syntax for declaring dependencies and faster code completion.</p>
-<p>Finally, be sure to check out the potential breaking changes in case they affect you.</p>
+    <p>The Gradle team is pleased to announce Gradle 3.2.</p>
+<p>It’s a relatively quiet release this time around, but there are still plenty of reasons to upgrade.</p>
+<p>Perhaps the most significant improvements are in the incremental build support, which now has better up-to-date checking for Java compilation, copying, and archiving. You can also have Gradle treat any task input as a classpath with the new @Classpath annotation.</p>
+<p>Users of Gradle’s native build support gain an important tool in this release. Many of you will be familiar with the buildDependents task for classic multi-project builds. This is now available in native builds as well via new assembleDependents and buildDependents tasks. These are incredibly useful for determining whether your changes have adversely impacted anything that depends on them.</p>
+<p>If you use an IDE and have a lot of dependencies in your build—particular dynamic ones—you may have experienced long import times. The underlying issue has been fixed in this release, resulting in significantly improved import times. One example enterprise build showed a 100-fold improvement!</p>
+<p>Our users trialling the Kotlin build script support will be glad to hear that progress continues apace with support for multi-project builds. And it’s easier to try this feature on Windows now that a bug in compiling scripts on that platform has been fixed.</p>
+<p>Gradle 3.1 fixed the behavior of Ctrl-C for many scenarios, but it would still kill the daemon if you used it during the first build run on that daemon. The situation has now improved with this release so that Ctrl-C won’t always kill the daemon on the first run. See the dedicated section later for a more complete description of the latest behavior.</p>
+<p>The last change we want to bring to your attention has been a long time coming and will affect a large number of builds: the shortcut syntax for declaring tasks (via &lt;&lt;) has now been deprecated. The eagle-eyed among you will notice that the user guide examples have been updated to use doLast() and we strongly recommend that you follow suit. This feature will be removed in Gradle 5.0! See the Deprecations section for more details.<br>Table Of Contents</p>
+<pre><code>New and noteworthy
+    Incremental build improvements
+    Build Dependents for Native Binaries
+    New preferProjectModules() conflict resolution strategy for multi-project builds
+    Improved deprecation warnings
+    HTTP Basic Authentication for wrapper distributions
+    Ctrl-C no longer stops the Daemon on first run
+    Multi-project builds with Kotlin scripting
+Fixed issues
+    Fixed a performance problem in the Tooling API
+Deprecations
+    The left shift operator on the Task interface
+    Modifying a child copy spec during task execution
+Potential breaking changes
+    Tooling API builders run before buildFinished listeners
+External contributions
+Known issues
+    Usage of Jansi library embedded with Java annotation processor
+</code></pre><p>New and noteworthy</p>
+<p>Here are the new features introduced in this Gradle release.<br>Incremental build improvements</p>
+<p>Gradle’s incremental build support continues to see improvements, particularly in the area of more accurate up-to-date checks.<br>Java compilation tracks Java version used</p>
+<p>Gradle’s Java plugin has taken account of the sourceCompatibility and targetCompatibility versions for a while now with respect to working out whether compiled class files are up to date or not. But the version of the Java compiler used was ignored.</p>
+<p>This release fixes that, which means changing the Java compiler version—say from Java 7 to Java 8—will now result in recompilation.<br>Better change tracking in copy and archive tasks</p>
+<p>A long-standing issue with copy-based tasks has now been fixed: the destination directory is finally taken into account for the tasks’ up-to-date checks. So changing the into value will result in the task running again.</p>
+<p>In addition, Gradle now tracks changes to case-sensitivity, duplication strategy, file mode and dir mode on child specs, not just the main one.<br>Classpath tracking</p>
+<p>Input properties that should be treated as Java classpaths can now be annotated with @Classpath. This allows the task to ignore irrelevant changes to the property, such as different names for the same files. It is similar to annotating the property with @OrderSensitive and @PathSensitive(RELATIVE), but it will also ignore the names of JAR files directly added to the classpath.<br>Removing all sources will delete outputs</p>
+<p>For a long time Gradle supported skipping the execution of a task entirely if it didn’t have any sources. This feature can be enabled by annotating an input file or file collection property with @SkipWhenEmpty. In previous versions of Gradle, removing all of a task’s input files would leave the previous build execution’s outputs in place on subsequent runs. This is now fixed: stale outputs are properly removed.<br>Build Dependents for Native Binaries</p>
+<p>Sometimes, you may need to assemble (compile and link) or build (compile, link and test) a component or binary and its dependents (things that depend upon the component or binary). The native software model now provides tasks that enable this capability.</p>
+<p>First, the dependentComponents task generates a report that gives insight about the relationships between each component.</p>
+<p>Second, the buildDependents<em> and assembleDependents</em> tasks allow you to assemble or build a component and its dependents in one step.</p>
+<p>See the User guide section on “Assembling or building dependents“ in the “Building native software“ chapter for more information.<br>New preferProjectModules() conflict resolution strategy for multi-project builds</p>
+<p>The preferProjectModules() configuration option can now be used in multi-project builds.</p>
+<p>configurations.all.resolutionStrategy.preferProjectModules()</p>
+<p>With this option it is possible to tell Gradle to always resolve a project dependency to a subproject, if the corresponding subproject exists in the build. Without this option, other dependencies to a higher version of the same module cause the replacement of the subproject by the other version in the dependency tree.<br>Improved deprecation warnings</p>
+<p>When a line in a build script triggers a deprecation warning, Gradle now prints its location to the console. You can also pass the command line option -s or -S to get the whole stack trace.</p>
+<p>The improved log message should make it much easier to spot and fix those warnings, as demonstrated by this sample output:</p>
+<blockquote>
+<p>gradle tasks<br>The Jetty plugin has been deprecated and is scheduled to be removed in Gradle 4.0. Consider using the Gretty (<a href="https://github.com/akhikhl/gretty" target="_blank" rel="external">https://github.com/akhikhl/gretty</a>) plugin instead.<br>        at build_dhrhtn4oo56t198zc6nkf59c4.run(/home/someuser/project-dir/build.gradle:3)<br>…</p>
+</blockquote>
+<p>This is particularly important now that the shortcut syntax for task definitions (&lt;&lt;) has been deprecated!<br>HTTP Basic Authentication for wrapper distributions</p>
+<p>The Gradle Wrapper can now download Gradle distributions from a server that requires authentication. This allows you to host the Gradle distribution on a private server protected with HTTP Basic Authentication.</p>
+<p>See the User guide section on “authenticated distribution download“ for more information.</p>
+<p>As stated in the User guide, please note that this shouldn’t be used over insecure connections.<br>Ctrl-C no longer stops the Daemon on first run</p>
+<p>We made a number of improvements in Gradle 3.1 that allow the Daemon to cancel a running build when a client disconnects unexpectedly. This included many scenarios in which the user pressed Ctrl-C, but not all. Pressing Ctrl-C or sending a SIGINT would always result in Gradle killing the daemon during the first build execution on that daemon.</p>
+<p>This release fixes the problem so that Gradle will always attempt to cancel the build, even during the first build run. If the build can be successfully canceled, the daemon remains available for subsequent builds. However, if the build is unresponsive and cannot be canceled, then Gradle will kill the daemon to ensure that the system resources are properly reclaimed.<br>Multi-project builds with Kotlin scripting</p>
+<p>This release ships with Gradle Script Kotlin v0.4.0.</p>
+<p>v0.4.0 improves support for multi-project builds of Kotlin based projects, enables the usage of Gradle Script Kotlin extensions to the Gradle API in buildSrc and fixes Kotlin build script compilation on Windows.</p>
+<p>See the Gradle Script Kotlin v0.4.0 release notes for the details.<br>Fixed issues</p>
+<p>19 issues have been fixed in Gradle 3.2.</p>
+<pre><code>[GRADLE-1346] - AbstractCopyTask is UP-TO-DATE after `into` changes
+[GRADLE-1682] - Test classloader ordering seems to not be in parent first
+[GRADLE-2440] - JavaCompile task does not remove stale classes when all source files are removed
+[GRADLE-2579] - SourceTask is always up-to-date after all source files are deleted
+[GRADLE-3307] - Gradle produces java.io.NotSerializableException for dependency resolve errors using the Tooling API
+[GRADLE-3329] - Exec output with long lines containing multibyte UTF-8 broken
+[GRADLE-3539] - NullPointerException from gradle --status or gradle --stop on Solaris
+[GRADLE-3550] - User Guide: Windows cmd for daemon disabling breaks existing gradle.properties if not ending with a newline
+[GRADLE-3557] - Dependency resolution fails with NPE when repository returns 304
+[GRADLE-3558] - Applying a plugin built with Gradle 2.x through ProjectBuilder can&apos;t find internal classes
+[GRADLE-3568] - NPE in AbstractCopyTask.rename()
+[GRADLE-3574] - Make org.gradle.internal.resource.transport.http.HttpResourceAccessor thread safe
+[GRADLE-3573] - JANSI can&apos;t initialize if java.io.tmpdir is mounted with noexec
+[GRADLE-3575] - IndexOutOfBoundsException is thrown when building task execution graph
+[GRADLE-3576] - Child specs in Copy tasks cannot be modified when the Copy task is already running
+[GRADLE-3577] - REPLACED file change type breaks compatibility with existing plugin
+[GRADLE-3579] - Generated scripts in Gradle 3.2 spawn child processes
+[GRADLE-3580] - IntelliJ Gradle import does not resolve sources for dependencies
+[GRADLE-3581] - Build fails for Kotlin project with multi-level project dependencies
+</code></pre><p>Fixed a performance problem in the Tooling API</p>
+<p>The dependency resolution caches were not being filled when building Tooling API models. As a result, IDE import was very slow when the caches were cold. This especially affected builds with many dynamic dependencies and low cache timeouts. One large enterprise project saw import times drop by a factor of 100.<br>Deprecations</p>
+<p>Features that have become superseded or irrelevant due to the natural evolution of Gradle become deprecated, and scheduled to be removed in the next major Gradle version (Gradle 4.0). See the User guide section on the “Feature Lifecycle” for more information.</p>
+<p>The following are the newly deprecated items in this Gradle release. If you have concerns about a deprecation, please raise it via the Gradle Forums.<br>The left shift operator on the Task interface</p>
+<p>The left shift (&lt;&lt;) operator acts as an alias for adding a doLast action to an existing task. For newcomers to Gradle, the meaning of the operator is not immediately apparent and leads to mixing configuration code with action code. Such misconfigured tasks lead to unexpected runtime behavior.</p>
+<p>Let’s consider the following two examples to illustrate some common mistakes:</p>
+<p>A build configures the description property and defines an action using the left shift operator. As a result, the task would not configure the task’s description.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// WRONG: Description assigned in execution phase</div><div class="line">task helloWorld &lt;&lt; &#123;</div><div class="line">    description = &apos;Prints out a message.&apos;</div><div class="line">    println &apos;Hello world!&apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// CORRECT: Description assigned in configuration phase</div><div class="line">task helloWorld &#123;</div><div class="line">    description = &apos;Prints out a message.&apos;</div><div class="line">    doLast &#123;</div><div class="line">        println &apos;Hello world!&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">A build defines a typed task using the left shift operator. As a result, the task is always UP-TO-DATE as the inputs and outputs of the task are configured during the execution phase.</div><div class="line"></div><div class="line">// WRONG: Configuring task in execution phase</div><div class="line">task copy(type: Copy) &lt;&lt; &#123;</div><div class="line">    from &apos;source&apos;</div><div class="line">    into &quot;$buildDir/output&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// CORRECT: Configuring task in configuration phase</div><div class="line">task copy(type: Copy) &#123;</div><div class="line">    from &apos;source&apos;</div><div class="line">    into &quot;$buildDir/output&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>With this version of Gradle, the left shift operator on the Task interface is deprecated and is scheduled to be removed with the next major release. There’s no direct replacement for the left shift operation. Please use the existing methods doFirst and doLast to define task actions.<br>Modifying a child copy spec during task execution</p>
+<p>As a consequence of improved change tracking in copy and archive tasks, we have deprecated the ability to modify a copy spec during the execution phase. These changes are not tracked since Gradle determines the inputs and outputs of a task before executing it.</p>
+<p>For example, the following will now create a deprecation warning:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">task myCopy(type: Copy) &#123;</div><div class="line">    from (&quot;some-dir&quot;)</div><div class="line">    into (&quot;build/output&quot;)</div><div class="line"></div><div class="line">    doFirst &#123;</div><div class="line">        // DEPRECATED</div><div class="line">        from (&quot;some-other-dir&quot;) &#123;</div><div class="line">            exclude &quot;excluded-file&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>The simple solution is to move the from into the configuration phase:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">task myCopy(type: Copy) &#123;</div><div class="line">    from (&quot;some-dir&quot;)</div><div class="line">    into (&quot;build/output&quot;)</div><div class="line">    from (&quot;some-other-dir&quot;) &#123;</div><div class="line">        exclude &quot;excluded-file&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>If you can’t do that because something must be calculated during the build (e.g. dependency resolution), then you can use a configuration task:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">task configureCopy &#123;</div><div class="line">    doLast &#123;</div><div class="line">        myCopy.from (&quot;some-other-dir&quot;) &#123;</div><div class="line">            exclude &quot;excluded-file&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">task myCopy(type: Copy, dependsOn: configureCopy) &#123;</div><div class="line">    from (&quot;some-dir&quot;)</div><div class="line">    into (&quot;build/output&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Potential breaking changes<br>Tooling API builders run before buildFinished listeners</p>
+<p>Tooling API model builders are now executed before any buildFinished listeners have been notified.<br>External contributions</p>
+<p>We would like to thank the following community members for making contributions to this release of Gradle.</p>
+<p>Shintaro Katafuchi - Fixed typo in ShadedJar.java under buildSrc<br>    Jörn Huxhorn - Show location in build file for deprecation warning, remove output files when task loses all its source files<br>    Jeff Baranski - Fix doc bug with turning off daemon in a .bat file<br>    Justin Sievenpiper - Prevent navigating down to JDK classes when detecting the parent test class<br>    Alex Proca - Limit Unix Start Scripts to use POSIX standard sh<br>    Spencer Allain - Do not require a password when using custom javax.net.ssl.trustStore for HTTP resource access over TLS<br>    Sandu Turcan - Added preferProjectModules() option to dependency resolution strategy<br>    Oliver Trosien - Wrong location of test resources in documentation<br>    Andreas Schmidt - Fixed grammatical errors in documentation<br>    Janito Vaqueiro Ferreira Filho - Describe relationship between sources and binaries in native build documentation<br>    Daniel Thomas - Added ability to revalidate external resource requests</p>
+<p>We love getting contributions from the Gradle community. For information on contributing, please see gradle.org/contribute.<br>Known issues</p>
+<p>Known issues are problems that were discovered post release that are directly related to changes made in this release.</p>
+<p>2 issues are known to affect Gradle 3.2.</p>
+<pre><code>[GRADLE-3583] - Newlines in JAVA_OPTS breaks application plugin shell script in Gradle 3.2
+[GRADLE-3582] - Gradle wrapper fails to escape arguments with nested quotes
+</code></pre><p>Usage of Jansi library embedded with Java annotation processor</p>
+<p>Issue #778 reported a failed build with a crashed daemon JVM if a Java annotation processor is used that embeds an older version of Jansi than the one bundled with Gradle. As a workaround you can execute the Java compiler in a forked process.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">tasks.withType(JavaCompile) &#123; </div><div class="line">    options.fork = true </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
   </div>
   
@@ -135,6 +226,15 @@
 
 </article>
 
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2016/09/25/gradle-3-1-released/">
+              <strong class="archive-post-title" itemprop="name">Gradle 3.1  正式发布.</strong>
+              <span class="archive-post-date"><time datetime="2016-09-25T00:00:00.000Z">2016-09-25</time></span>
+            </a>
+          </article>
         
       
         
