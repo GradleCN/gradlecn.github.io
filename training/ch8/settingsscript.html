@@ -2,15 +2,15 @@
 <html lang="en">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>Tag | Gradle 中文用户组</title>
+  <title>多模块项目脚本结构-settings文件 | Gradle 中文用户组</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://gradlecn.org/training/tag.html">
+  <link rel="canonical" href="https://gradlecn.org/training/ch8/settingsscript.html">
   <!-- Alternative links -->
   
     
-      <link rel="alternative" hreflang="en" href="https://gradlecn.org/training/tag.html">
+      <link rel="alternative" hreflang="en" href="https://gradlecn.org/training/ch8/settingsscript.html">
     
   
   <!-- Icon -->
@@ -32,22 +32,22 @@
   <!-- RSS -->
   <link rel="alternate" href="/atom.xml" title="Gradle 中文用户组">
   <!-- Open Graph -->
-  <meta name="description" content="A tag allows users to quickly and easily insert snippets into their posts.
-Synopsishexo.extend.tag.register(name, function(args, content)&amp;#123;  // ...&amp;#125;, options);
-Two arguments will be passed in">
+  <meta name="description" content="我们了解到一个典型的多模块项目需要有一个根模块项目以及模块描述文件(默认为settings.gradle)，下面我们将通过一个 多项目示例 来对多模块项目的结构以及脚本进行更深入的了解。
+如果要让 Gradle 支持多构建，只需为你的项目确定一个 根模块项目 并且在根模块项目下添加 settings.gradle 文件用以描述模块（项目）关系include &apos;base&apos;,&apos;main&apos;
+　　这里">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Tag">
-<meta property="og:url" content="https://gradlecn.org/training/tag.html">
+<meta property="og:title" content="多模块项目脚本结构-settings文件">
+<meta property="og:url" content="https://gradlecn.org/training/ch8/settingsscript.html">
 <meta property="og:site_name" content="Gradle 中文用户组">
-<meta property="og:description" content="A tag allows users to quickly and easily insert snippets into their posts.
-Synopsishexo.extend.tag.register(name, function(args, content)&amp;#123;  // ...&amp;#125;, options);
-Two arguments will be passed in">
-<meta property="og:updated_time" content="2016-08-24T12:54:06.375Z">
+<meta property="og:description" content="我们了解到一个典型的多模块项目需要有一个根模块项目以及模块描述文件(默认为settings.gradle)，下面我们将通过一个 多项目示例 来对多模块项目的结构以及脚本进行更深入的了解。
+如果要让 Gradle 支持多构建，只需为你的项目确定一个 根模块项目 并且在根模块项目下添加 settings.gradle 文件用以描述模块（项目）关系include &apos;base&apos;,&apos;main&apos;
+　　这里">
+<meta property="og:updated_time" content="2016-12-12T05:41:25.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tag">
-<meta name="twitter:description" content="A tag allows users to quickly and easily insert snippets into their posts.
-Synopsishexo.extend.tag.register(name, function(args, content)&amp;#123;  // ...&amp;#125;, options);
-Two arguments will be passed in">
+<meta name="twitter:title" content="多模块项目脚本结构-settings文件">
+<meta name="twitter:description" content="我们了解到一个典型的多模块项目需要有一个根模块项目以及模块描述文件(默认为settings.gradle)，下面我们将通过一个 多项目示例 来对多模块项目的结构以及脚本进行更深入的了解。
+如果要让 Gradle 支持多构建，只需为你的项目确定一个 根模块项目 并且在根模块项目下添加 settings.gradle 文件用以描述模块（项目）关系include &apos;base&apos;,&apos;main&apos;
+　　这里">
 <meta name="twitter:site" content="gradlecn">
   <!-- Google Analytics -->
   
@@ -99,7 +99,7 @@ Two arguments will be passed in">
     </nav>
     <div id="lang-select-wrap">
       <label id="lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></label>
-      <select id="lang-select" data-canonical="training/tag.html">
+      <select id="lang-select" data-canonical="training/ch8/settingsscript.html">
         
           <option value="en" selected>简体中文</option>
         
@@ -121,32 +121,29 @@ Two arguments will be passed in">
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">Tag</h1>
-                <a href="https://github.com/hexojs/site/edit/master/source/training/tag.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+                <h1 class="article-title" itemprop="name">多模块项目脚本结构-settings文件</h1>
+                <a href="https://github.com/hexojs/site/edit/master/source/training/ch8/settingsscript.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
               </header>
               <div class="article-content" itemprop="articleBody">
-                <p>A tag allows users to quickly and easily insert snippets into their posts.</p>
-<h2 id="Synopsis" class="article-heading"><a href="#Synopsis" class="headerlink" title="Synopsis"></a>Synopsis<a class="article-anchor" href="#Synopsis" aria-hidden="true"></a></h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">hexo.extend.tag.register(name, <span class="function"><span class="keyword">function</span>(<span class="params">args, content</span>)</span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;, options);</div></pre></td></tr></table></figure>
-<p>Two arguments will be passed into the tag function: <code>args</code> and <code>content</code>. <code>args</code> contains the arguments passed into the tag plugin and <code>content</code> is the wrapped content from the tag plugin.</p>
-<p>Since the introduction of asynchronous rendering in Hexo 3, we are using <a href="http://mozilla.github.io/nunjucks/" target="_blank" rel="external">Nunjucks</a> for rendering. The behavior may be somewhat different from that in <a href="http://paularmstrong.github.io/swig/" target="_blank" rel="external">Swig</a>.</p>
-<h2 id="Options" class="article-heading"><a href="#Options" class="headerlink" title="Options"></a>Options<a class="article-anchor" href="#Options" aria-hidden="true"></a></h2><h3 id="ends" class="article-heading"><a href="#ends" class="headerlink" title="ends"></a>ends<a class="article-anchor" href="#ends" aria-hidden="true"></a></h3><p>Use end tags. This option is <code>false</code> by default.</p>
-<h3 id="async" class="article-heading"><a href="#async" class="headerlink" title="async"></a>async<a class="article-anchor" href="#async" aria-hidden="true"></a></h3><p>Enable async mode. This option is <code>false</code> by default.</p>
-<h2 id="Examples" class="article-heading"><a href="#Examples" class="headerlink" title="Examples"></a>Examples<a class="article-anchor" href="#Examples" aria-hidden="true"></a></h2><h3 id="Without-End-Tags" class="article-heading"><a href="#Without-End-Tags" class="headerlink" title="Without End Tags"></a>Without End Tags<a class="article-anchor" href="#Without-End-Tags" aria-hidden="true"></a></h3><p>Insert a Youtube video.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">hexo.extend.tag.register(<span class="string">'youtube'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">args</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> id = args[<span class="number">0</span>];</div><div class="line">  <span class="keyword">return</span> <span class="string">'&lt;div class="video-container"&gt;&lt;iframe width="560" height="315" src="http://www.youtube.com/embed/'</span> + id + <span class="string">'" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;'</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="With-End-Tags" class="article-heading"><a href="#With-End-Tags" class="headerlink" title="With End Tags"></a>With End Tags<a class="article-anchor" href="#With-End-Tags" aria-hidden="true"></a></h3><p>Insert a pull quote.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">hexo.extend.tag.register(<span class="string">'pullquote'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">args, content</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> className =  args.join(<span class="string">' '</span>);</div><div class="line">  <span class="keyword">return</span> <span class="string">'&lt;blockquote class="pullquote'</span> + className + <span class="string">'"&gt;'</span> + content + <span class="string">'&lt;/blockquote&gt;'</span>;</div><div class="line">&#125;, &#123;ends: <span class="literal">true</span>&#125;);</div></pre></td></tr></table></figure>
-<h3 id="Async-Rendering" class="article-heading"><a href="#Async-Rendering" class="headerlink" title="Async Rendering"></a>Async Rendering<a class="article-anchor" href="#Async-Rendering" aria-hidden="true"></a></h3><p>Insert a file.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'hexo-fs'</span>);</div><div class="line"><span class="keyword">var</span> pathFn = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"></div><div class="line">hexo.extend.tag.register(<span class="string">'include_code'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">args</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> filename = args[<span class="number">0</span>];</div><div class="line">  <span class="keyword">var</span> path = pathFn.join(hexo.source_dir, filename);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> fs.readFile(path).then(<span class="function"><span class="keyword">function</span>(<span class="params">content</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'&lt;pre&gt;&lt;code&gt;'</span> + content + <span class="string">'&lt;/code&gt;&lt;/pre&gt;'</span>;</div><div class="line">  &#125;);</div><div class="line">&#125;, &#123;<span class="keyword">async</span>: <span class="literal">true</span>&#125;);</div></pre></td></tr></table></figure>
+                <p>　　我们了解到一个典型的多模块项目需要有一个根模块项目以及模块描述文件(默认为<code>settings.gradle</code>)，下面我们将通过一个 <a href="https://github.com/GradleCN/GradleSide/tree/master/17-multi-project-central" target="_blank" rel="external">多项目示例</a> 来对多模块项目的结构以及脚本进行更深入的了解。</p>
+<p>如果要让 <code>Gradle</code> 支持多<br>构建，只需为你的项目确定一个 根模块项目 并且在根模块项目下添加 <code>settings.gradle</code> 文件用以描述模块（项目）关系<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">include <span class="string">'base'</span>,<span class="string">'main'</span></div></pre></td></tr></table></figure></p>
+<p>　　这里将模块（项目）名称路径的字符串以数组的形式传递给了<code>include</code>函数，Gradle 会以相对于当前目录按照 include 给定的模块（项目）路径查找对应的子模块，如果要声明的模块（项目）有多个层次可以用<code>:</code>进行描述，假设<code>main</code>下面又分了<code>Alpha</code>,<code>Bravo</code> 那么声明方式则按如下方式书写<br><figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">include <span class="string">'base'</span>,<span class="string">'main:Alpha'</span>,<span class="string">'main:Bravo'</span></div></pre></td></tr></table></figure></p>
+<p>　　这里的 <code>settings</code> 文件实际上是对应的 <code>Settings</code> 接口，<code>Setitings</code> 接口中提供的函数在本脚本中都是可用的，具体细节请查阅 <a href="https://docs.gradle.org/current/dsl/" target="_blank" rel="external">&gt;Settins接口DSL&lt;</a> 文档进行了解。</p>
+<p>　　在构建的 <strong>初始化阶段</strong>，Gradle 会读取这个文件，并创建一个 Settings 类型的实例。Gradle 会依据此文件进行多模块项目构建，默认情况下 Gradle 会从同级的 master 目录下寻找此文件，如果未找到则会去父级目录寻找。如果搜寻不到 <code>settings</code> 文件，那么 Gradle 会把模块当做单独构建的项目去执行单独构建。这里 Gradle 提供了一个命令行参数 <code>-u</code> 或 <code>--no-search-upward</code> 来控制 Gradle 不去父目录搜寻 <code>settings</code> 文件。</p>
+<p>　　默认情况下，Gradle 会采用<code>settings.gradle</code>作为文件名去查找，但如果处于某种不可描述的原因要采用其它名称的话也是可以的，调用命令时可以通过<code>-c</code>或者<code>--settings-file</code>参数来指定<code>settings</code>文件的位置以及名称。</p>
+<blockquote>
+<p>tip: 通常情况下，不存在孤立的子模块，所以构建的执行顺序往往是由依赖顺序所决定的。但如果无法通过依赖顺序决定，那么 Gradle 会简单的按照首字母顺序决定构建顺序。</p>
+</blockquote>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2016-08-24T12:54:06.375Z" itemprop="dateModified">上次更新：2016-08-24</time>
+                <time class="article-footer-updated" datetime="2016-12-12T05:41:25.634Z" itemprop="dateModified">上次更新：2016-12-12</time>
                 <a href="/training/ch1/intro.html" class="article-footer-next" title="Gradle介绍"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
  <section class="post-comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="https://gradlecn.org/training/tag.html" data-title="<%= page.title%>" data-url="<https://gradlecn.org/training/tag.html"></div>
+  <div class="ds-thread" data-thread-key="https://gradlecn.org/training/ch8/settingsscript.html" data-title="<%= page.title%>" data-url="<https://gradlecn.org/training/ch8/settingsscript.html"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
@@ -172,7 +169,7 @@ Two arguments will be passed in">
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Synopsis"><span class="toc-text">Synopsis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Options"><span class="toc-text">Options</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ends"><span class="toc-text">ends</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#async"><span class="toc-text">async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples"><span class="toc-text">Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Without-End-Tags"><span class="toc-text">Without End Tags</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#With-End-Tags"><span class="toc-text">With End Tags</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Async-Rendering"><span class="toc-text">Async Rendering</span></a></li></ol></li></ol>
+              
               <a href="#" id="article-toc-top">回到顶部</a>
             </div>
           </aside>
@@ -214,7 +211,7 @@ Two arguments will be passed in">
   </div>
   <div id="mobile-lang-select-wrap">
     <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
-    <select id="mobile-lang-select" data-canonical="training/tag.html">
+    <select id="mobile-lang-select" data-canonical="training/ch8/settingsscript.html">
       
         <option value="en" selected>简体中文</option>
       

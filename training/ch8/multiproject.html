@@ -2,15 +2,15 @@
 <html lang="en">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>Tag | Gradle 中文用户组</title>
+  <title>多模块项目的构建 | Gradle 中文用户组</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://gradlecn.org/training/tag.html">
+  <link rel="canonical" href="https://gradlecn.org/training/ch8/multiproject.html">
   <!-- Alternative links -->
   
     
-      <link rel="alternative" hreflang="en" href="https://gradlecn.org/training/tag.html">
+      <link rel="alternative" hreflang="en" href="https://gradlecn.org/training/ch8/multiproject.html">
     
   
   <!-- Icon -->
@@ -32,22 +32,22 @@
   <!-- RSS -->
   <link rel="alternate" href="/atom.xml" title="Gradle 中文用户组">
   <!-- Open Graph -->
-  <meta name="description" content="A tag allows users to quickly and easily insert snippets into their posts.
-Synopsishexo.extend.tag.register(name, function(args, content)&amp;#123;  // ...&amp;#125;, options);
-Two arguments will be passed in">
+  <meta name="description" content="随着项目规模的扩展和功能的增加，任何一个简单的项目基本都会进行模块的拆分独立，然后通过项目之间的依赖进行重新整合。
+　　项目拆分带来的好处也显而易见。拆分可以是项目结构更加清晰，职责划分更加明确，相关模块的负责人只需专注于自己负责的子模块而无需对整个项目进行一次构建。　　
+　　如果不采用构建工具或许最原始的方式无非于将一些相对独立的和公共的模块代码拆分成独立项目，通过手工打jar包替换的方式进">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Tag">
-<meta property="og:url" content="https://gradlecn.org/training/tag.html">
+<meta property="og:title" content="多模块项目的构建">
+<meta property="og:url" content="https://gradlecn.org/training/ch8/multiproject.html">
 <meta property="og:site_name" content="Gradle 中文用户组">
-<meta property="og:description" content="A tag allows users to quickly and easily insert snippets into their posts.
-Synopsishexo.extend.tag.register(name, function(args, content)&amp;#123;  // ...&amp;#125;, options);
-Two arguments will be passed in">
-<meta property="og:updated_time" content="2016-08-24T12:54:06.375Z">
+<meta property="og:description" content="随着项目规模的扩展和功能的增加，任何一个简单的项目基本都会进行模块的拆分独立，然后通过项目之间的依赖进行重新整合。
+　　项目拆分带来的好处也显而易见。拆分可以是项目结构更加清晰，职责划分更加明确，相关模块的负责人只需专注于自己负责的子模块而无需对整个项目进行一次构建。　　
+　　如果不采用构建工具或许最原始的方式无非于将一些相对独立的和公共的模块代码拆分成独立项目，通过手工打jar包替换的方式进">
+<meta property="og:updated_time" content="2016-12-12T07:56:29.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tag">
-<meta name="twitter:description" content="A tag allows users to quickly and easily insert snippets into their posts.
-Synopsishexo.extend.tag.register(name, function(args, content)&amp;#123;  // ...&amp;#125;, options);
-Two arguments will be passed in">
+<meta name="twitter:title" content="多模块项目的构建">
+<meta name="twitter:description" content="随着项目规模的扩展和功能的增加，任何一个简单的项目基本都会进行模块的拆分独立，然后通过项目之间的依赖进行重新整合。
+　　项目拆分带来的好处也显而易见。拆分可以是项目结构更加清晰，职责划分更加明确，相关模块的负责人只需专注于自己负责的子模块而无需对整个项目进行一次构建。　　
+　　如果不采用构建工具或许最原始的方式无非于将一些相对独立的和公共的模块代码拆分成独立项目，通过手工打jar包替换的方式进">
 <meta name="twitter:site" content="gradlecn">
   <!-- Google Analytics -->
   
@@ -99,7 +99,7 @@ Two arguments will be passed in">
     </nav>
     <div id="lang-select-wrap">
       <label id="lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></label>
-      <select id="lang-select" data-canonical="training/tag.html">
+      <select id="lang-select" data-canonical="training/ch8/multiproject.html">
         
           <option value="en" selected>简体中文</option>
         
@@ -121,32 +121,30 @@ Two arguments will be passed in">
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">Tag</h1>
-                <a href="https://github.com/hexojs/site/edit/master/source/training/tag.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+                <h1 class="article-title" itemprop="name">多模块项目的构建</h1>
+                <a href="https://github.com/hexojs/site/edit/master/source/training/ch8/multiproject.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
               </header>
               <div class="article-content" itemprop="articleBody">
-                <p>A tag allows users to quickly and easily insert snippets into their posts.</p>
-<h2 id="Synopsis" class="article-heading"><a href="#Synopsis" class="headerlink" title="Synopsis"></a>Synopsis<a class="article-anchor" href="#Synopsis" aria-hidden="true"></a></h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">hexo.extend.tag.register(name, <span class="function"><span class="keyword">function</span>(<span class="params">args, content</span>)</span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;, options);</div></pre></td></tr></table></figure>
-<p>Two arguments will be passed into the tag function: <code>args</code> and <code>content</code>. <code>args</code> contains the arguments passed into the tag plugin and <code>content</code> is the wrapped content from the tag plugin.</p>
-<p>Since the introduction of asynchronous rendering in Hexo 3, we are using <a href="http://mozilla.github.io/nunjucks/" target="_blank" rel="external">Nunjucks</a> for rendering. The behavior may be somewhat different from that in <a href="http://paularmstrong.github.io/swig/" target="_blank" rel="external">Swig</a>.</p>
-<h2 id="Options" class="article-heading"><a href="#Options" class="headerlink" title="Options"></a>Options<a class="article-anchor" href="#Options" aria-hidden="true"></a></h2><h3 id="ends" class="article-heading"><a href="#ends" class="headerlink" title="ends"></a>ends<a class="article-anchor" href="#ends" aria-hidden="true"></a></h3><p>Use end tags. This option is <code>false</code> by default.</p>
-<h3 id="async" class="article-heading"><a href="#async" class="headerlink" title="async"></a>async<a class="article-anchor" href="#async" aria-hidden="true"></a></h3><p>Enable async mode. This option is <code>false</code> by default.</p>
-<h2 id="Examples" class="article-heading"><a href="#Examples" class="headerlink" title="Examples"></a>Examples<a class="article-anchor" href="#Examples" aria-hidden="true"></a></h2><h3 id="Without-End-Tags" class="article-heading"><a href="#Without-End-Tags" class="headerlink" title="Without End Tags"></a>Without End Tags<a class="article-anchor" href="#Without-End-Tags" aria-hidden="true"></a></h3><p>Insert a Youtube video.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">hexo.extend.tag.register(<span class="string">'youtube'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">args</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> id = args[<span class="number">0</span>];</div><div class="line">  <span class="keyword">return</span> <span class="string">'&lt;div class="video-container"&gt;&lt;iframe width="560" height="315" src="http://www.youtube.com/embed/'</span> + id + <span class="string">'" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;'</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="With-End-Tags" class="article-heading"><a href="#With-End-Tags" class="headerlink" title="With End Tags"></a>With End Tags<a class="article-anchor" href="#With-End-Tags" aria-hidden="true"></a></h3><p>Insert a pull quote.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">hexo.extend.tag.register(<span class="string">'pullquote'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">args, content</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> className =  args.join(<span class="string">' '</span>);</div><div class="line">  <span class="keyword">return</span> <span class="string">'&lt;blockquote class="pullquote'</span> + className + <span class="string">'"&gt;'</span> + content + <span class="string">'&lt;/blockquote&gt;'</span>;</div><div class="line">&#125;, &#123;ends: <span class="literal">true</span>&#125;);</div></pre></td></tr></table></figure>
-<h3 id="Async-Rendering" class="article-heading"><a href="#Async-Rendering" class="headerlink" title="Async Rendering"></a>Async Rendering<a class="article-anchor" href="#Async-Rendering" aria-hidden="true"></a></h3><p>Insert a file.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'hexo-fs'</span>);</div><div class="line"><span class="keyword">var</span> pathFn = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"></div><div class="line">hexo.extend.tag.register(<span class="string">'include_code'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">args</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> filename = args[<span class="number">0</span>];</div><div class="line">  <span class="keyword">var</span> path = pathFn.join(hexo.source_dir, filename);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> fs.readFile(path).then(<span class="function"><span class="keyword">function</span>(<span class="params">content</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'&lt;pre&gt;&lt;code&gt;'</span> + content + <span class="string">'&lt;/code&gt;&lt;/pre&gt;'</span>;</div><div class="line">  &#125;);</div><div class="line">&#125;, &#123;<span class="keyword">async</span>: <span class="literal">true</span>&#125;);</div></pre></td></tr></table></figure>
+                <p>　　随着项目规模的扩展和功能的增加，任何一个简单的项目基本都会进行模块的拆分独立，然后通过项目之间的依赖进行重新整合。</p>
+<p>　　项目拆分带来的好处也显而易见。拆分可以是项目结构更加清晰，职责划分更加明确，相关模块的负责人只需专注于自己负责的子模块而无需对整个项目进行一次构建。　　</p>
+<p>　　如果不采用构建工具或许最原始的方式无非于将一些相对独立的和公共的模块代码拆分成独立项目，通过手工打jar包替换的方式进行多项目之间的依赖管理，这无疑是低效、繁琐且没有价值的工作。</p>
+<p>　　Gradle对多模块项目有着优秀的支持，现在借助于Gradle可以把你从一些低价值的劳动中解放出来。你可以肆意的采用水平或者分层的方式组织你的项目模块，肆意的进行模块之间的依赖，甚至是模块之间深层次的依赖。举个栗子，如果有个web工程依赖于一个<code>util</code>工程和一个<code>common-service</code>工程，那么当<code>util</code>和<code>common-service</code>进行了任何修改，在web工程进行打包的时候会自动编译打包依赖的<code>util</code>和<code>common-service</code>工程，如果你采用了合理的<code>依赖声明</code>那么在发布war的时候这两个工程的会被自动打成<code>jar</code>包打进最终的<code>war</code>中。<br>  这一章节你将会了解到如下内容</p>
+<ul>
+<li>多模块项目结构</li>
+<li>多模块项目脚本</li>
+<li>构建分层布局的多模块项目</li>
+<li>构建集中化配置的多模块项目</li>
+</ul>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2016-08-24T12:54:06.375Z" itemprop="dateModified">上次更新：2016-08-24</time>
+                <time class="article-footer-updated" datetime="2016-12-12T07:56:29.925Z" itemprop="dateModified">上次更新：2016-12-12</time>
                 <a href="/training/ch1/intro.html" class="article-footer-next" title="Gradle介绍"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               
  <section class="post-comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="https://gradlecn.org/training/tag.html" data-title="<%= page.title%>" data-url="<https://gradlecn.org/training/tag.html"></div>
+  <div class="ds-thread" data-thread-key="https://gradlecn.org/training/ch8/multiproject.html" data-title="<%= page.title%>" data-url="<https://gradlecn.org/training/ch8/multiproject.html"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
@@ -172,7 +170,7 @@ Two arguments will be passed in">
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Synopsis"><span class="toc-text">Synopsis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Options"><span class="toc-text">Options</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ends"><span class="toc-text">ends</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#async"><span class="toc-text">async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples"><span class="toc-text">Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Without-End-Tags"><span class="toc-text">Without End Tags</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#With-End-Tags"><span class="toc-text">With End Tags</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Async-Rendering"><span class="toc-text">Async Rendering</span></a></li></ol></li></ol>
+              
               <a href="#" id="article-toc-top">回到顶部</a>
             </div>
           </aside>
@@ -214,7 +212,7 @@ Two arguments will be passed in">
   </div>
   <div id="mobile-lang-select-wrap">
     <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
-    <select id="mobile-lang-select" data-canonical="training/tag.html">
+    <select id="mobile-lang-select" data-canonical="training/ch8/multiproject.html">
       
         <option value="en" selected>简体中文</option>
       

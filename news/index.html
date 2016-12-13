@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
   <title>News | Gradle 中文用户组</title>
@@ -71,11 +71,11 @@
     <header id="header" class="wrapper">
   <div id="header-inner" class="inner">
   
-    <a href="/zh-cn/" id="logo"></a>
+    <a href="/" id="logo"></a>
     
     <nav id="main-nav">
       <a href="#" class="main-nav-link" alt="(建设中)">用户手册</a>
-      <a href="/zh-cn/training/" class="main-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/about/" class="main-nav-link" target="_self">关于</a>
+      <a href="/training/" class="main-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="main-nav-link" target="_blank">示例</a><a href="/news/" class="main-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="main-nav-link" target="_blank">博客</a><a href="/about/" class="main-nav-link" target="_self">关于</a>
       <a href="https://github.com/gradle/gradle" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
       <!-- 
       <div id="search-input-wrap">
@@ -90,9 +90,7 @@
       <label id="lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></label>
       <select id="lang-select" data-canonical="">
         
-          <option value="zh-tw">正體中文</option>
-        
-          <option value="zh-cn" selected>简体中文</option>
+          <option value="en" selected>简体中文</option>
         
       </select>
     </div>
@@ -114,19 +112,20 @@
   <header class="article-header">
     
       <h1>
-        <a href="/news/2016/08/15/gradle-3-0-released/" class="article-title" itemprop="name">Gradle 3.0  正式发布.</a>
+        <a href="/news/2016/09/25/gradle-3-1-released/" class="article-title" itemprop="name">Gradle 3.0  正式发布.</a>
       </h1>
     
-    <a href="/news/2016/08/15/gradle-3-0-released/" class="article-date"><time datetime="2016-08-15T00:00:00.000Z">2016-08-15</time></a>
+    <a href="/news/2016/09/25/gradle-3-1-released/" class="article-date"><time datetime="2016-09-25T00:00:00.000Z">2016-09-25</time></a>
   </header>
   <div class="article-content" itemprop="articleBody">
-    <p>Version 3.0</p>
-<p>The Gradle team is pleased to announce Gradle 3.0. </p>
-<p>Performance continues to be a focus for the Gradle team and the third major release reflects this. The Gradle Daemon is a key performance enhancer, making builds up to 75% faster, but it needed to be explicitly enabled in previous versions of Gradle. This is no longer necessary as the Daemon is now enabled by default in 3.0. We’ve put a lot of effort into fixing the most significant issues with the Gradle Daemon, especially on Windows platforms. We have also been working hard to make the Gradle Daemon aware of its health and impact to the system it’s running on and use this information for self-healing actions as well as better daemon status reporting. The Gradle Daemon is the foundation for a great Gradle experience.</p>
-<p>Ever wished for better IDE support when writing Gradle build scripts? This release provides the first support for Gradle Script Kotlin, which is a Kotlin-based build language for Gradle scripts. Its deep integration with both IDEA and Eclipse provides many of the things you would expect from an IDE such as auto-completion, refactoring, navigation to source, and more. Groovy is still the primary build language for Gradle scripts and will always be supported, but we are working intensely to make Gradle Script Kotlin fully production ready by the end of the year in order to provide the best possible development experience to Gradle users. See Chris Beams’s blog post for more information about this exciting new feature.</p>
-<p>Additionally, Gradle 3.0 provides support for running on the latest Java 9 EAP builds. Users can also build and run tests using these early versions of JDK 9, but there are some limitations. Check out the section on Java 9 support below for more details.</p>
-<p>With the release of Gradle 3.0, it’s a good time to reflect on the progress we’ve made over the last 2 years. Check out some of the improvements since Gradle 2.0. Lots of reasons to upgrade!</p>
-<p>We’re also pleased to make available a draft of our new Performance Guide. This is intended to be a short guide that shows you how to dramatically improve your build performance in the time it takes to eat lunch. Check it out and please provide any feedback via the guide’s GitHub Issues.</p>
+    <p>The Gradle team is pleased to announce Gradle 3.1.</p>
+<p>Multi-project builds are a powerful feature with one significant constraint: the projects have to be in the same directory hierarchy. This doesn’t help if you want to work on code across multiple repositories, for example if you’re trying to fix a bug in a third-party open-source library that one of your projects depends on.</p>
+<p>Gradle 3.1 now supports this scenario with the introduction of Composite Builds for all users. It’s hard to understate just how important this feature is as it provides a whole new way of organizing your projects and builds. There is more work to be done in this area and the feature is currently incubating, but we encourage you to try it out and give us your feedback!</p>
+<p>Incremental Build is a similar feature in terms of impact and this release improves the control you have over its up-to-date checks. You can read about the details further down.</p>
+<p>As with many previous Gradle releases, you will also benefit from some performance improvements, this time in the form of faster dependency resolution. From testing, Android users specifically could see up to a 50% reduction in configuration and Android Studio sync time.</p>
+<p>Build cancellation has improved when using the Daemon. Cancelling a build with Ctrl-C after the first build no longer terminates the Gradle Daemon. </p>
+<p>Our Play Framework and Kotlin build script users will also be happy as 3.1 now has (limited) support for Play 2.5.x and the Kotlin build script support gets a more fully-featured syntax for declaring dependencies and faster code completion.</p>
+<p>Finally, be sure to check out the potential breaking changes in case they affect you.</p>
 
   </div>
   
@@ -136,6 +135,15 @@
 
 </article>
 
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2016/08/15/gradle-3-0-released/">
+              <strong class="archive-post-title" itemprop="name">Gradle 3.0  正式发布.</strong>
+              <span class="archive-post-date"><time datetime="2016-08-15T00:00:00.000Z">2016-08-15</time></span>
+            </a>
+          </article>
         
       
         
@@ -168,7 +176,7 @@
   <nav id="mobile-nav">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
-      <a href="/zh-cn/training/" class="mobile-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="mobile-nav-link" target="_blank">示例</a><a href="/news/" class="mobile-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="mobile-nav-link" target="_blank">博客</a><a href="/about/" class="mobile-nav-link" target="_self">关于</a>
+      <a href="/training/" class="mobile-nav-link" target="_self">入门教程</a><a href="https://github.com/pkaq/gradleside" class="mobile-nav-link" target="_blank">示例</a><a href="/news/" class="mobile-nav-link" target="_self">新闻</a><a href="http://pkaq.org" class="mobile-nav-link" target="_blank">博客</a><a href="/about/" class="mobile-nav-link" target="_self">关于</a>
       <li class="mobile-nav-item">
         <a href="https://github.com/gradle/gradle" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
       </li>
@@ -179,9 +187,7 @@
     <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
     <select id="mobile-lang-select" data-canonical="">
       
-        <option value="zh-tw">正體中文</option>
-      
-        <option value="zh-cn" selected>简体中文</option>
+        <option value="en" selected>简体中文</option>
       
     </select>
   </div>
